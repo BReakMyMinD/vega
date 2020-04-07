@@ -9,4 +9,27 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    //Строки для кнопок
+    <string name="Monday">Пн</string>
+    <string name="Tuesday">Вт</string>
+    <string name="Wednesday">Ср</string>
+    <string name="Thursday">Чт</string>
+    <string name="Friday">Пт</string>
+    <string name="Saturday">Сб</string>
+    //Строка для отсутствующих значений
+    <string name="Default">Пустое значение для проверки</string>
+    //Строки для времени пар
+    <string name="Time1">9:00</string>
+    <string name="Time2">10:40</string>
+    <string name="Time3">13:10</string>
+    <string name="Time4">14:50</string>
+    <string name="Time5">16:30</string>
+    <string name="Time6">18:10</string>
+    //Строки для номеров пар
+    <string name="Number1">1</string>
+    <string name="Number2">2</string>
+    <string name="Number3">3</string>
+    <string name="Number4">4</string>
+    <string name="Number5">5</string>
+    <string name="Number6">6</string>
 </resources>
