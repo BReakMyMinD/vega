@@ -53,7 +53,8 @@ class ScheduleContainer {
         }
         //временная заглушка:
         //путь к файлу мб неправильный
-        data = parse("./../../../res/temp_data.json") as JsonObject
+        data = parse("./temp_data.json") as JsonObject
     }
     private lateinit var data: JsonObject
+
 }

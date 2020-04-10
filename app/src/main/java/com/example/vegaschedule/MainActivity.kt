@@ -5,8 +5,11 @@ import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.TableLayout
+
 
 import kotlinx.android.synthetic.main.activity_main.*
+import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,6 +17,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+        val paraName1 = findViewById<TextView>(R.id.paraName1) as TextView
+        val schedule = ScheduleContainer()
+        schedule.loadData("test")
+       // val scheduleArray: Array<PairDetails> = schedule.getDaySchedule("КМБО-02-19", "ПН" , 1)
+        //paraName1.text = scheduleArray[3].name
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
