@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         val paraName1 = findViewById<TextView>(R.id.paraName1) as TextView
         val schedule = ScheduleContainer()
         schedule.loadData("test")
-       // val scheduleArray: Array<PairDetails> = schedule.getDaySchedule("КМБО-02-19", "ПН" , 1)
+        val scheduleArray: Array<Par?> = schedule.getDaySchedule("КМБО-02-19", "ПН" , 1)
         //paraName1.text = scheduleArray[3].name
     }
 
