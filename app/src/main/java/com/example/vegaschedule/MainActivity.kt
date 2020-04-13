@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
-        val weekSpinner: Spinner = findViewById(R.id.weekSpinner) // Невозможно сделать с такой заглушкой
+        //val weekSpinner: Spinner = findViewById(R.id.weekSpinner) // Невозможно сделать с такой заглушкой
         val groupSpinner: Spinner = findViewById(R.id.groupSpinner)
         val schedule = ScheduleContainer()
         schedule.loadData("test")
@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
         dayButtonSaturday.setOnClickListener {
             setSchedule("СБ", getChosenGroup(), getChosenWeek())
         }
-        groupSpinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+        groupSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
             }
