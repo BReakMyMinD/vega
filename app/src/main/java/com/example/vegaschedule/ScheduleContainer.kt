@@ -9,12 +9,27 @@ class ScheduleContainer {
     //возвращает расписание на выбранный день в виде упорядоченного массива пар
     //индекс в массиве - порядковый номер пары минус 1
     //аргументы на русском языке, как в json-файле
-    fun getDaySchedule(currentGroup: String, currentDay: String, currentWeek: Int): Array<Par?> {
+    fun getDaySchedule(currentGroup: String, currentDay: String, currentWeek: Int, subgroup: Int): Array<Par?> {
         val arr: Array<Par?> = arrayOfNulls(6)
         val groupObj: Group? = data?.groups?.find{ it.group == currentGroup }
         val dayObj: Day? = groupObj?.days?.find{ it.day == currentDay }
         try {
-            for (par in dayObj?.pars!!) {
+            loop@ for (par in dayObj?.pars!!) {
+                if(par.subgroup != null) {
+                    if(par.subgroup != subgroup) {
+                        continue@loop
+                    }
+                }
+                if(par.weekType != null) {
+                    if(par.weekType != currentWeek%2) {
+                        continue@loop
+                    }
+                }
+                if(par.excludedWeeks != null) {
+                    if(currentWeek in par.excludedWeeks) {
+                        continue@loop
+                    }
+                }
                 arr[par.number - 1] = par
             }
         } finally {
@@ -23,7 +38,7 @@ class ScheduleContainer {
     }
     //возвращает список групп
     fun getGroups(): MutableList<String>{
-        val list: MutableList<String> = arrayListOf()
+        val list = arrayListOf<String>()
         try {
             for (group in data?.groups!!) {
                 list.add(group.group)
@@ -47,6 +62,17 @@ class ScheduleContainer {
             7 -> time = data?.const?.timePar?.seven.toString()
         }
         return time.split("-").first()
+    }
+
+    fun getFirstWeek(): String? {
+        return data?.settings?.firstWeekDate
+    }
+    fun getWeeks(): MutableList<Int> {
+        val weeks = arrayListOf<Int>()
+        for(num in 1..16){
+            weeks.add(num)
+        }
+        return weeks
     }
     //загружает с сервера актуальное расписание в формате json
     fun loadData(requestPath: String) {
@@ -93,11 +119,27 @@ class ScheduleContainer {
                   "day": "ПН",
                   "pars": [
                     {
-                      "name": "Введение в ПД",
-                      "type": "зачет",
+                      "name": "кмбо0219 пн 3",
+                      "type": "лк",
                       "number": 3,
+                      "place": "A-16",
+                      "pr": "Артамкин"
+                    },
+                    {
+                      "name": "кмбо0219 пн 4 1пг чет",
+                      "type": "лаб",
+                      "number": 4,
                       "place": "Б-209",
-                      "whiteWeek": 17
+                      "subgroup": 1,
+                      "typeWeek": 2
+                    },
+                    {
+                      "name": "кмбо0219 пн 4 2пг нечет",
+                      "type": "лаб",
+                      "number": 4,
+                      "place": "Б-209",
+                      "subgroup": 2,
+                      "typeWeek": 1
                     }
                   ]
                 },
@@ -105,17 +147,23 @@ class ScheduleContainer {
                   "day": "ВТ",
                   "pars": [
                     {
-                      "name": "Программирование в ЗР",
+                      "name": "кмбо0219 2 вт",
                       "number": 2,
                       "place": "Б-209",
-                      "type": "зачет",
-                      "whiteWeek": 17
+                      "type": "лк"
                     },
                     {
-                      "name": "Физкультура и спорт",
-                      "type": "зачет",
+                      "name": "кмбо0219 3 вт",
+                      "type": "пр",
+                      "number": 3,
+                      "place": "A-215"
+                    }
+                    {
+                      "name": "кмбо0219 5 вт 1пг",
+                      "type": "пр",
                       "number": 5,
-                      "whiteWeek": 17
+                      "place": "Б-209"
+                      "subgroup": 1
                     }
                   ]
                 },
@@ -123,27 +171,25 @@ class ScheduleContainer {
                   "day": "СР",
                   "pars": [
                     {
-                      "name": "Введение в РПО",
+                      "name": "кмбо0219 5 ср 1пг",
                       "number": 5,
                       "place": "Б-209",
-                      "type": "зачет",
-                      "subgroup": 1,
-                      "whiteWeek": 17
+                      "type": "лк",
+                      "subgroup": 1
                     },
                     {
-                      "name": "Введение в РПО",
+                      "name": "кмбо0219 6 ср 2пг",
                       "number": 6,
                       "place": "Б-209",
-                      "type": "зачет",
-                      "subgroup": 2,
-                      "whiteWeek": 17
+                      "type": "лк",
+                      "subgroup": 2
                     },
                     {
-                      "name": "Мет. мат. ан.",
+                      "name": "кмбо0219 3 ср нечет",
                       "type": "зачет",
                       "number": 3,
                       "place": "Г-102",
-                      "whiteWeek": 17
+                      "typeWeek": 1
                     }
                   ]
                 },
@@ -151,17 +197,47 @@ class ScheduleContainer {
                   "day": "ЧТ",
                   "pars": [
                     {
-                      "name": "Иностранный язык",
+                      "name": "кмбо0219 чт 3",
                       "number": 3,
-                      "type": "зачет",
-                      "place": "И-311, Б-402",
-                      "whiteWeek": 17
+                      "type": "пр",
+                      "place": "Б-402"
                     },
                     {
-                      "name": "Физ-ра",
+                      "name": "кмбо0219 чт 4",
+                      "number": 4,
+                      "type": "пр"
+                    },
+                    {
+                      "name": "кмбо0219 чт 5 кроме 10н",
                       "number": 5,
-                      "type": "зачет",
-                      "whiteWeek": 17
+                      "type": "лк",
+                      "place": "А-10"
+                      "excludedWeeks": [10]
+                    }
+                  ]
+                },
+                {
+                  "day": "ПТ",
+                  "pars": [
+                    {
+                      "name": "кмбо0219 пт 1 нечет",
+                      "number": 1,
+                      "type": "пр",
+                      "typeWeek": 1,
+                      "place": "Б-402"
+                    },
+                    {
+                      "name": "кмбо0219 пт 1 чет",
+                      "number": 1,
+                      "type": "пр",
+                      "typeWeek": 2
+                    },
+                    {
+                      "name": "кмбо0219 пт 2 2пг",
+                      "number": 2,
+                      "type": "лк",
+                      "place": "Б-209",
+                      "subgroup": 2
                     }
                   ]
                 }
@@ -174,27 +250,26 @@ class ScheduleContainer {
                   "day": "ПН",
                   "pars": [
                     {
-                      "name": "Ин. язык",
+                      "name": "кмбо0519 пн 1",
                       "number": 1,
-                      "type": "зачет",
+                      "type": "пр",
                       "place": "Б-402",
-                      "whiteWeek": 17,
                       "pr": "Гриценко С.А."
                     },
                     {
-                      "name": "Ин. язык",
+                      "name": "кмбо0519 пн 2 чет",
                       "number": 2,
-                      "type": "зачет",
+                      "type": "лк",
                       "place": "А-126",
-                      "whiteWeek": 17,
+                      "typeWeek": 2
                       "pr": "Иванова Е.А."
                     },
                     {
-                      "name": "Введение в ПД",
-                      "type": "зачет",
-                      "number": 4,
+                      "name": "кмбо0519 пн 3 нечет",
+                      "type": "пр",
+                      "number": 3,
                       "place": "Б-209",
-                      "whiteWeek": 17
+                      "typeWeek": 1
                     }
                   ]
                 },
@@ -202,19 +277,26 @@ class ScheduleContainer {
                   "day": "ВТ",
                   "pars": [
                     {
-                      "name": "Программирование в ЗР",
+                      "name": "кмбо0519 1 вт 1пг",
                       "number": 1,
                       "place": "Б-209",
-                      "type": "зачет",
-                      "whiteWeek": 17
+                      "type": "лк",
+                      "subgroup": 1
                     },
                     {
-                      "name": "Ин. язык",
-                      "number": 4,
-                      "type": "зачет",
-                      "place": "И-305, И-307",
-                      "whiteWeek": 17,
-                      "pr": "Прокопчук А.Р.,<br>Гаврилова Е.А."
+                      "name": "кмбо0219 2 вт 2пг",
+                      "number": 2,
+                      "place": "Б-209",
+                      "type": "лк",
+                      "subgroup": 2
+                    },
+                    {
+                      "name": "кмбо0219 3 вт нечет кроме 9 и 11",
+                      "type": "лк",
+                      "number": 3,
+                      "place": "Г-102",
+                      "typeWeek": 1
+                      "excludedWeeks": [9, 11]
                     }
                   ]
                 },
@@ -222,20 +304,24 @@ class ScheduleContainer {
                   "day": "СР",
                   "pars": [
                     {
-                      "name": "Введение в РПО",
+                      "name": "кмбо0519 ср 3 1пг",
                       "number": 3,
                       "place": "Б-209",
-                      "type": "зачет",
-                      "subgroup": 1,
-                      "whiteWeek": 17
+                      "type": "пр",
+                      "subgroup": 1
                     },
                     {
-                      "name": "Введение в РПО",
+                      "name": "кмбо0519 ср 4 2 пг",
                       "number": 4,
                       "place": "Б-209",
-                      "type": "зачет",
-                      "subgroup": 2,
-                      "whiteWeek": 17
+                      "type": "пр",
+                      "subgroup": 2
+                    },
+                    {
+                      "name": "кмбо0519 5 ср",
+                      "number": 5,
+                      "place": "Б-209",
+                      "type": "лк"
                     }
                   ]
                 },
@@ -243,10 +329,21 @@ class ScheduleContainer {
                   "day": "ЧТ",
                   "pars": [
                     {
-                      "name": "Физ-ра",
+                      "name": "кмбо0519 чт 3",
+                      "number": 3,
+                      "type": "пр",
+                      "place": "Б-402"
+                    },
+                    {
+                      "name": "кмбо0519 чт 4",
+                      "number": 4,
+                      "type": "пр"
+                    },
+                    {
+                      "name": "кмбо0519 чт 5",
                       "number": 5,
-                      "type": "зачет",
-                      "whiteWeek": 17
+                      "type": "лк",
+                      "place": "А-10"
                     }
                   ]
                 },
@@ -254,327 +351,29 @@ class ScheduleContainer {
                   "day": "ПТ",
                   "pars": [
                     {
-                      "name": "Физ-ра",
-                      "number": 2,
-                      "type": "зачет",
-                      "whiteWeek": 17
-                    },
-                    {
-                      "name": "Мет. мат. ан.",
-                      "type": "зачет",
-                      "number": 3,
-                      "place": "А-307",
-                      "whiteWeek": 17
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "group": "КМБО-02-18",
-              "days": [
-                {
-                  "day": "ПН",
-                  "pars": [
-                    {
-                      "name": "Языки и МП",
-                      "number": 5,
-                      "place": "Б-209",
-                      "type": "зачет,<br>к/р",
-                      "whiteWeek": 17
-                    },
-                    {
-                      "name": "Экономика",
-                      "type": "зачет",
-                      "number": 3,
-                      "place": "Д-208",
-                      "whiteWeek": 17
-                    }
-                  ]
-                },
-                {
-                  "day": "ВТ",
-                  "pars": [
-                    {
-                      "name": "Ин. яз.",
+                      "name": "кмбо0519 пт 1",
                       "number": 1,
-                      "place": "И-320",
-                      "type": "зачет",
-                      "whiteWeek": 17
+                      "type": "лк"
+                      "place": "A-15"
                     },
                     {
-                      "name": "Мат. анализ",
-                      "type": "зачет",
-                      "number": 4,
-                      "place": "А-150",
-                      "whiteWeek": 17
-                    }
-                  ]
-                },
-                {
-                  "day": "СР",
-                  "pars": [
-                    {
-                      "name": "Базы данных",
-                      "type": "зачет",
+                      "name": "кмбо0519 пт 2",
+                      "type": "пр",
                       "number": 2,
-                      "place": "Б-209",
-                      "whiteWeek": 17
+                      "place": "А-174"
                     },
                     {
-                      "name": "Физ-ра",
-                      "number": 5,
-                      "type": "зачет",
-                      "whiteWeek": 17
-                    }
-                  ]
-                },
-                {
-                  "day": "ЧТ",
-                  "pars": [
-                    {
-                      "name": "Физ-ра",
-                      "number": 2,
-                      "type": "зачет",
-                      "whiteWeek": 17
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "group": "КМБО-05-18",
-              "days": [
-                {
-                  "day": "ПН",
-                  "pars": [
-                    {
-                      "name": "Языки и МП",
-                      "type": "зачет,<br>к/р",
-                      "number": 6,
-                      "place": "Б-209",
-                      "whiteWeek": 17
-                    }
-                  ]
-                },
-                {
-                  "day": "ВТ",
-                  "pars": [
-                    {
-                      "name": "Ин. яз.",
+                      "name": "кмбо0519 пт 3 чет",
+                      "type": "лк",
                       "number": 3,
-                      "place": "А-126, Б-408",
-                      "type": "зачет",
-                      "whiteWeek": 17,
-                      "pr": "Нанай Ф.А.,<br>Гриценко С.А."
+                      "place": "А-10"
+                      "typeWeek": 2
                     },
                     {
-                      "name": "Мат. анализ",
-                      "type": "зачет",
-                      "number": 5,
-                      "place": "А-150",
-                      "whiteWeek": 17,
-                      "pr": "Шелепин А.Л."
-                    }
-                  ]
-                },
-                {
-                  "day": "СР",
-                  "pars": [
-                    {
-                      "name": "Базы данных",
-                      "type": "зачет",
-                      "number": 1,
-                      "place": "Б-209",
-                      "whiteWeek": 17
-                    },
-                    {
-                      "name": "Физ-ра",
+                      "name": "кмбо0519 пт 4",
+                      "type": "пр",
                       "number": 4,
-                      "type": "зачет",
-                      "whiteWeek": 17
-                    }
-                  ]
-                },
-                {
-                  "day": "ЧТ",
-                  "pars": [
-                    {
-                      "name": "Физ-ра",
-                      "number": 2,
-                      "type": "зачет",
-                      "whiteWeek": 17
-                    }
-                  ]
-                },
-                {
-                  "day": "ПТ",
-                  "pars": [
-                    {
-                      "name": "Экономика",
-                      "type": "зачет",
-                      "number": 5,
-                      "place": "А-208",
-                      "whiteWeek": 17
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "group": "КМБО-02-17",
-              "days": [
-                {
-                  "day": "ПН",
-                  "pars": [
-                    {
-                      "name": "Физ-ра",
-                      "number": 5,
-                      "type": "зачет",
-                      "whiteWeek": 17
-                    }
-                  ]
-                },
-                {
-                  "day": "ВТ",
-                  "pars": [
-                    {
-                      "name": "Числ. методы",
-                      "number": 2,
-                      "place": "А-204",
-                      "type": "зачет",
-                      "subgroup": 1,
-                      "whiteWeek": 17
-                    },
-                    {
-                      "name": "Системный анализ ПО",
-                      "type": "зачет",
-                      "number": 4,
-                      "place": "Б-209",
-                      "whiteWeek": 17
-                    },
-                    {
-                      "name": "Числ. методы",
-                      "number": 6,
-                      "place": "Б-209",
-                      "type": "зачет",
-                      "subgroup": 2,
-                      "whiteWeek": 17
-                    }
-                  ]
-                },
-                {
-                  "day": "ПТ",
-                  "pars": [
-                    {
-                      "name": "ОС",
-                      "number": 4,
-                      "place": "Б-209",
-                      "type": "зачет",
-                      "whiteWeek": 17
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "group": "КМБО-05-17",
-              "days": [
-                {
-                  "day": "ВТ",
-                  "pars": [
-                    {
-                      "name": "Числ. методы",
-                      "number": 1,
-                      "place": "Б-209",
-                      "type": "зачет",
-                      "whiteWeek": 17
-                    },
-                    {
-                      "name": "Системный анализ ПО",
-                      "type": "зачет",
-                      "number": 3,
-                      "place": "Б-209",
-                      "whiteWeek": 17
-                    }
-                  ]
-                },
-                {
-                  "day": "ЧТ",
-                  "pars": [
-                    {
-                      "name": "Физ-ра",
-                      "number": 4,
-                      "type": "зачет",
-                      "whiteWeek": 17
-                    }
-                  ]
-                },
-                {
-                  "day": "ПТ",
-                  "pars": [
-                    {
-                      "name": "ОС",
-                      "number": 5,
-                      "place": "Б-209",
-                      "type": "зачет",
-                      "whiteWeek": 17
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "group": "КМБО-02-16",
-              "days": [
-                {
-                  "day": "ПН",
-                  "pars": [
-                    {
-                      "name": "Системы АП",
-                      "number": 2,
-                      "place": "Б-209",
-                      "type": "зачет",
-                      "whiteWeek": 17
-                    },
-                    {
-                      "name": "Гр. оборона",
-                      "number": 4,
-                      "place": "А-11",
-                      "type": "зачет",
-                      "whiteWeek": 17
-                    }
-                  ]
-                },
-                {
-                  "day": "ВТ",
-                  "pars": [
-                    {
-                      "name": "Теория игр",
-                      "number": 3,
-                      "place": "А-177-1",
-                      "type": "зачет",
-                      "whiteWeek": 17
-                    },
-                    {
-                      "name": "УРПО",
-                      "number": 5,
-                      "place": "Б-209",
-                      "type": "к/п",
-                      "whiteWeek": 17
-                    }
-                  ]
-                },
-                {
-                  "day": "ПТ",
-                  "pars": [
-                    {
-                      "name": "Произв. обучение",
-                      "number": 2,
-                      "place": "Б-209",
-                      "type": "зачет",
-                      "whiteWeek": 17,
-                      "pr": "Крыжановский Ю.М."
+                      "place": "Б-209"
                     }
                   ]
                 }

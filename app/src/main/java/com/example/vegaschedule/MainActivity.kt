@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
                 ArrayAdapter(this, android.R.layout.simple_spinner_item, schedule.getGroups())
             groupSpinner.adapter = adapter
         }
-        groupSpinner.setSelection(2)
+        //groupSpinner.setSelection(2)
 
 
         setSchedule(getCurrentDay(),getChosenGroup(),getChosenWeek())
@@ -134,7 +134,7 @@ class MainActivity : AppCompatActivity() {
         schedule.loadData("test")
 
 
-        var scheduleArray: Array<Par?> = schedule.getDaySchedule(currentGroup = group, currentDay = day , currentWeek = week)
+        var scheduleArray: Array<Par?> = schedule.getDaySchedule(currentGroup = group, currentDay = day , currentWeek = week, subgroup = 1)
         paraName1.text = scheduleArray[0]?.name
         paraName2.text = scheduleArray[1]?.name
         paraName3.text = scheduleArray[2]?.name
