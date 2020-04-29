@@ -1,6 +1,7 @@
 package com.example.vegaschedule
 
 
+import android.annotation.SuppressLint
 import android.icu.util.Calendar
 import android.os.Build
 import android.os.Bundle
@@ -14,6 +15,7 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -26,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         //val weekSpinner: Spinner = findViewById(R.id.weekSpinner) // Невозможно сделать с такой заглушкой
         val groupSpinner: Spinner = findViewById(R.id.groupSpinner)
-        val schedule = ScheduleContainer()
+        schedule = ScheduleContainer()
         schedule.loadData("test")
         if (groupSpinner != null) {
             val adapter =
@@ -100,12 +102,31 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("SimpleDateFormat")
+    @RequiresApi(Build.VERSION_CODES.N)
+    fun getCurrentWeek() : Int{
+        val calendar = Calendar.getInstance()
+        val firstWeek = schedule.getFirstWeek() as String
+        val firstWeekDate = java.text.SimpleDateFormat("dd.MM.yyyy").parse(firstWeek)
+        var weeks = calendar.fieldDifference(firstWeekDate, Calendar.WEEK_OF_YEAR)
+        if(weeks < 0) {
+            weeks = -weeks
+            weeks += 1
+        }
+        else {
+            weeks = 0
+        }
+        return weeks
+    }
+
     fun getChosenGroup() : String {
         return groupSpinner.selectedItem.toString()
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     fun getChosenWeek() : Int { //Пока что так...
-        return 1
+        return this.getCurrentWeek()
+
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
@@ -130,11 +151,11 @@ class MainActivity : AppCompatActivity() {
         val time6 = findViewById<TextView>(R.id.TextTime6) as TextView
 
 
-        val schedule = ScheduleContainer()
-        schedule.loadData("test")
+        //val schedule = ScheduleContainer()
+        //schedule.loadData("test")
 
 
-        var scheduleArray: Array<Par?> = schedule.getDaySchedule(currentGroup = group, currentDay = day , currentWeek = week, subgroup = 1)
+        val scheduleArray: Array<Par?> = schedule.getDaySchedule(currentGroup = group, currentDay = day , currentWeek = week, subgroup = 1)
         paraName1.text = scheduleArray[0]?.name
         paraName2.text = scheduleArray[1]?.name
         paraName3.text = scheduleArray[2]?.name
@@ -178,6 +199,8 @@ class MainActivity : AppCompatActivity() {
         time5.text = schedule.getPairTime(5)
         time6.text = schedule.getPairTime(6)
     }
+
+    private lateinit var schedule: ScheduleContainer
 }
 
 

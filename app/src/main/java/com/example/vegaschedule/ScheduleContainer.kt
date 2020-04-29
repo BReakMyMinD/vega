@@ -76,7 +76,6 @@ class ScheduleContainer {
     }
     //загружает с сервера актуальное расписание в формате json
     fun loadData(requestPath: String) {
-
         data = Klaxon().parse<ScheduleData>(temp)
     }
     private var data: ScheduleData? = null
@@ -84,7 +83,7 @@ class ScheduleContainer {
     private val temp: String = """
         {
           "settings": {
-            "firstWeekDate": "02.08.2019",
+            "firstWeekDate": "10.02.2020",
             "maxPar": 7
           },
           "const": {
@@ -208,11 +207,11 @@ class ScheduleContainer {
                       "type": "пр"
                     },
                     {
-                      "name": "кмбо0219 чт 5 кроме 10н",
+                      "name": "кмбо0219 чт 5 кроме 12н",
                       "number": 5,
                       "type": "лк",
                       "place": "А-10"
-                      "excludedWeeks": [10]
+                      "excludedWeeks": [12]
                     }
                   ]
                 },
