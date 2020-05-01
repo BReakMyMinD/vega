@@ -28,8 +28,12 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         //val weekSpinner: Spinner = findViewById(R.id.weekSpinner) // Невозможно сделать с такой заглушкой
         val groupSpinner: Spinner = findViewById(R.id.groupSpinner)
-        schedule = ScheduleContainer()
-        schedule.loadData("test")
+
+        //val provider = FileProvider("temp_schedule.json", this)
+        //or
+        val provider = ServerProvider("https://my-json-server.typicode.com/BReakMyMinD/vega/db", this)
+        schedule = ScheduleContainer(provider)
+        schedule.loadData()
         if (groupSpinner != null) {
             val adapter =
                 ArrayAdapter(this, android.R.layout.simple_spinner_item, schedule.getGroups())
