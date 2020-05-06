@@ -58,7 +58,7 @@ data class Par(
     val place: String? = null,//аудитория(если есть)
     val pr: String? = null,//преподаватель(если есть)
     val subgroup: Int? = null,//подгруппа(если есть)
-    val weekType: Int? = null,//1 если по нечетным неделям, 2 если по четным, null если по обеим
+    val typeWeek: Int? = null,//1 если по нечетным неделям, 2 если по четным, null если по обеим
     val excludedWeeks: List<Int>? = null,//кроме данных недель(если есть)
     val type: String
 )

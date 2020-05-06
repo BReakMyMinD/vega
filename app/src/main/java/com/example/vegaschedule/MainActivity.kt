@@ -26,9 +26,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
-        //val weekSpinner: Spinner = findViewById(R.id.weekSpinner) // Невозможно сделать с такой заглушкой
+        val weekSpinner: Spinner = findViewById(R.id.weekSpinner)
         val groupSpinner: Spinner = findViewById(R.id.groupSpinner)
-
+        var chosenDay : String = getCurrentDay()
         //val provider = FileProvider("temp_schedule.json", this)
         //or
         val provider = ServerProvider("https://my-json-server.typicode.com/BReakMyMinD/vega/db", this)
@@ -39,27 +39,37 @@ class MainActivity : AppCompatActivity() {
                 ArrayAdapter(this, android.R.layout.simple_spinner_item, schedule.getGroups())
             groupSpinner.adapter = adapter
         }
-        //groupSpinner.setSelection(2)
-
+        if (weekSpinner != null) {
+            val adapter =
+                ArrayAdapter(this,android.R.layout.simple_spinner_item, schedule.getWeeks())
+            weekSpinner.adapter = adapter
+        }
+        weekSpinner.setSelection(getCurrentWeek() - 1)
 
         setSchedule(getCurrentDay(),getChosenGroup(),getChosenWeek())
         dayButtonMonday.setOnClickListener{
             setSchedule("ПН",getChosenGroup(),getChosenWeek())
+            chosenDay = "ПН"
         }
         dayButtonTuesday.setOnClickListener{
             setSchedule("ВТ",getChosenGroup(),getChosenWeek())
+            chosenDay = "ВТ"
         }
         dayButtonWednesday.setOnClickListener{
             setSchedule("СР",getChosenGroup(),getChosenWeek())
+            chosenDay = "СР"
         }
         dayButtonThursday.setOnClickListener{
             setSchedule("ЧТ",getChosenGroup(),getChosenWeek())
+            chosenDay = "ЧТ"
         }
         dayButtonFriday.setOnClickListener{
             setSchedule("ПТ",getChosenGroup(),getChosenWeek())
+            chosenDay = "ПТ"
         }
         dayButtonSaturday.setOnClickListener {
             setSchedule("СБ", getChosenGroup(), getChosenWeek())
+            chosenDay = "СБ"
         }
         groupSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -69,6 +79,18 @@ class MainActivity : AppCompatActivity() {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 val selectedItem = parent?.getItemAtPosition(position).toString()
                 setSchedule(getCurrentDay(),selectedItem,getChosenWeek())
+            }
+
+        }
+        weekSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                val selectedItem = parent?.getItemAtPosition(position).toString()
+                //println("onItemSelected - begin")
+                setSchedule(chosenDay,getChosenGroup(),selectedItem.toInt())
+                //println("onItemSelected - final")
             }
 
         }
@@ -128,8 +150,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
-    fun getChosenWeek() : Int { //Пока что так...
-        return this.getCurrentWeek()
+    fun getChosenWeek() : Int {
+        return weekSpinner.selectedItem.toString().toInt()
 
     }
 
@@ -206,5 +228,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var schedule: ScheduleContainer
 }
+
 
 

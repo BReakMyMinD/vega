@@ -19,8 +19,15 @@ class ScheduleContainer(private val provider: Provider) {
                         continue@loop
                     }
                 }
-                if(par.weekType != null) {
-                    if(par.weekType != currentWeek%2) {
+                if(par.typeWeek != null) {
+                    val currentWeekType : Int
+                    if (currentWeek%2 == 0) {
+                        currentWeekType = 2
+                    }
+                    else {
+                        currentWeekType = 1
+                    }
+                    if(par.typeWeek != currentWeekType) {
                         continue@loop
                     }
                 }
@@ -68,8 +75,8 @@ class ScheduleContainer(private val provider: Provider) {
     }
     fun getWeeks(): MutableList<Int> {
         val weeks = arrayListOf<Int>()
-        for(num in 1..16){
-            weeks.add(num)
+        for(num in 0..15){
+            weeks.add(num + 1)
         }
         return weeks
     }
