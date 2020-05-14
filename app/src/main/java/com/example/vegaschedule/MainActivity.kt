@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         val weekSpinner: Spinner = findViewById(R.id.weekSpinner)
         val groupSpinner: Spinner = findViewById(R.id.groupSpinner)
+        val subGroupSpinner: Spinner = findViewById(R.id.subGroupSpinner)
         var chosenDay : String = getCurrentDay()
         //val provider = FileProvider("temp_schedule.json", this)
         //or
@@ -46,6 +47,7 @@ class MainActivity : AppCompatActivity() {
         }
         weekSpinner.setSelection(getCurrentWeek() - 1)
 
+
         setSchedule(getCurrentDay(),getChosenGroup(),getChosenWeek())
         dayButtonMonday.setOnClickListener{
             setSchedule("ПН",getChosenGroup(),getChosenWeek())
@@ -54,22 +56,39 @@ class MainActivity : AppCompatActivity() {
         dayButtonTuesday.setOnClickListener{
             setSchedule("ВТ",getChosenGroup(),getChosenWeek())
             chosenDay = "ВТ"
+
         }
         dayButtonWednesday.setOnClickListener{
             setSchedule("СР",getChosenGroup(),getChosenWeek())
             chosenDay = "СР"
+
         }
         dayButtonThursday.setOnClickListener{
             setSchedule("ЧТ",getChosenGroup(),getChosenWeek())
             chosenDay = "ЧТ"
+
         }
         dayButtonFriday.setOnClickListener{
             setSchedule("ПТ",getChosenGroup(),getChosenWeek())
             chosenDay = "ПТ"
+
         }
         dayButtonSaturday.setOnClickListener {
             setSchedule("СБ", getChosenGroup(), getChosenWeek())
             chosenDay = "СБ"
+
+        }
+        nextWeek.setOnClickListener{
+            if (getChosenWeek() < 16 ) {
+                weekSpinner.setSelection(getChosenWeek())
+                setSchedule(chosenDay, getChosenGroup(), getChosenWeek())
+            }
+        }
+        prevWeek.setOnClickListener{
+            if (getChosenWeek() > 1) {
+                weekSpinner.setSelection(getChosenWeek() - 2)
+                setSchedule(chosenDay, getChosenGroup(), getChosenWeek())
+            }
         }
         groupSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -88,13 +107,25 @@ class MainActivity : AppCompatActivity() {
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 val selectedItem = parent?.getItemAtPosition(position).toString()
-                //println("onItemSelected - begin")
                 setSchedule(chosenDay,getChosenGroup(),selectedItem.toInt())
-                //println("onItemSelected - final")
             }
 
         }
+        subGroupSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
+
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                setSchedule(chosenDay,getChosenGroup(),getChosenWeek())
+            }
+        }
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -155,6 +186,10 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    fun getChosenSubGroup() : Int {
+        return subGroupSpinner.selectedItem.toString().toInt()
+    }
+
     @RequiresApi(Build.VERSION_CODES.N)
     fun setSchedule(day:String, group:String, week:Int){
         val paraName1 = findViewById<TextView>(R.id.paraName1) as TextView
@@ -181,7 +216,7 @@ class MainActivity : AppCompatActivity() {
         //schedule.loadData("test")
 
 
-        val scheduleArray: Array<Par?> = schedule.getDaySchedule(currentGroup = group, currentDay = day , currentWeek = week, subgroup = 1)
+        val scheduleArray: Array<Par?> = schedule.getDaySchedule(currentGroup = group, currentDay = day , currentWeek = week, subgroup = getChosenSubGroup())
         paraName1.text = scheduleArray[0]?.name
         paraName2.text = scheduleArray[1]?.name
         paraName3.text = scheduleArray[2]?.name

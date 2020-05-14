@@ -31,15 +31,33 @@
 
             <Spinner
                 android:id="@+id/groupSpinner"
+                style="@android:style/Widget.Holo.Spinner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:prompt="@string/groupNameSpinner"
+                android:spinnerMode="dialog" />
+
+            <Spinner
+                android:id="@+id/subGroupSpinner"
+                style="@android:style/Widget.Holo.Spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:entries="@array/subGroups"
+                android:fadeScrollbars="false"
+                android:prompt="@string/subGroupNameSpinner"
+                android:spinnerMode="dialog" />
 
             <Spinner
                 android:id="@+id/weekSpinner"
+                style="@android:style/Widget.Holo.Spinner"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:prompt="@string/weekNameSpinner"
+                android:spinnerMode="dialog" />
+
         </LinearLayout>
 
         <TableRow
@@ -98,17 +116,19 @@
     <TableLayout
         android:id="@+id/ScheduleTable"
         android:layout_width="409dp"
-        android:layout_height="673dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="4dp"
         android:layout_marginRight="4dp"
+        android:layout_marginBottom="50dp"
         android:background="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
 
         <TableRow
             android:id="@+id/FirstRow"
@@ -120,7 +140,7 @@
                 android:id="@+id/double1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#03A9F4">
+                android:background="#FFFFFF">
 
                 <TableRow
                     android:id="@+id/double1str1"
@@ -562,5 +582,31 @@
             </TableLayout>
         </TableRow>
     </TableLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/ScheduleTable"
+        app:layout_constraintStart_toStartOf="@+id/ScheduleTable"
+        app:layout_constraintTop_toBottomOf="@+id/ScheduleTable">
+
+        <Button
+            android:id="@+id/prevWeek"
+            style="?attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/prevWeek" />
+
+        <Button
+            android:id="@+id/nextWeek"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/nextWeek" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

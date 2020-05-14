@@ -7,6 +7,9 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
+    <string name="nextWeek">Следующая неделя</string>
+    <string name="prevWeek">Предыдущая неделя</string>
+
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     //Строки для кнопок
@@ -32,4 +35,15 @@
     <string name="Number4">4</string>
     <string name="Number5">5</string>
     <string name="Number6">6</string>
+
+    <string name="groupNameSpinner">Выбор группы</string>
+    <string name="subGroupNameSpinner">Выбор подгруппы</string>
+    <string name="weekNameSpinner">Выбор недели</string>
+
+    <string-array name="subGroups">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+
 </resources>
