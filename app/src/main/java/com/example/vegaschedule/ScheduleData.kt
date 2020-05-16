@@ -38,13 +38,13 @@ data class FullDay(
 )
 
 data class TimePar(
-    val one: String,
-    val two: String,
-    val three: String,
-    val four: String,
-    val five: String,
-    val six: String,
-    val seven: String
+    val `1`: String,
+    val `2`: String,
+    val `3`: String,
+    val `4`: String,
+    val `5`: String,
+    val `6`: String,
+    val `7`: String
 )
 
 data class Day(
@@ -55,10 +55,10 @@ data class Day(
 data class Par(
     val name: String,
     val number: Int,
+    val type: String,
     val place: String? = null,//аудитория(если есть)
     val pr: String? = null,//преподаватель(если есть)
     val subgroup: Int? = null,//подгруппа(если есть)
-    val typeWeek: Int? = null,//1 если по нечетным неделям, 2 если по четным, null если по обеим
-    val excludedWeeks: List<Int>? = null,//кроме данных недель(если есть)
-    val type: String
+    val weekSettings: String,//all, even, odd, except, only
+    val weeks: List<Int>? = null
 )

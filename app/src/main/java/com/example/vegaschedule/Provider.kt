@@ -18,7 +18,7 @@ class FileProvider(private val name: String, private val context: Context) : Pro
     }
 }
 
-class ServerProvider(private val path: String, private val context: Context) : Provider {
+class ServerProvider(private val path: String) : Provider {
     override fun getSchedule(): ScheduleData? {
         var jsonString: String = "null"
         var requestTime: Int = 0

@@ -15,7 +15,6 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -30,11 +29,14 @@ class MainActivity : AppCompatActivity() {
         val groupSpinner: Spinner = findViewById(R.id.groupSpinner)
         val subGroupSpinner: Spinner = findViewById(R.id.subGroupSpinner)
         var chosenDay : String = getCurrentDay()
-        //val provider = FileProvider("temp_schedule.json", this)
+        val provider = FileProvider("temp_schedule.json", this)
         //or
-        val provider = ServerProvider("https://my-json-server.typicode.com/BReakMyMinD/vega/db", this)
+        //val provider = ServerProvider("https://my-json-server.typicode.com/BReakMyMinD/vega/db")
         schedule = ScheduleContainer(provider)
         schedule.loadData()
+        val storage = SettingsStorage(this, schedule.getGroups().first())
+
+
         if (groupSpinner != null) {
             val adapter =
                 ArrayAdapter(this, android.R.layout.simple_spinner_item, schedule.getGroups())
@@ -212,8 +214,7 @@ class MainActivity : AppCompatActivity() {
         val time6 = findViewById<TextView>(R.id.TextTime6) as TextView
 
 
-        //val schedule = ScheduleContainer()
-        //schedule.loadData("test")
+
 
 
         val scheduleArray: Array<Par?> = schedule.getDaySchedule(currentGroup = group, currentDay = day , currentWeek = week, subgroup = getChosenSubGroup())
