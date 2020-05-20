@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cnb_unselectedColor="#666666">
+
+    <item
+        android:id="@+id/schedule"
+        android:icon="@drawable/ic_schedule"
+        android:title="@string/schedule"
+        app:cnb_iconColor="#2196F3">
+    </item>
+    <item
+        android:id="@+id/teacher"
+        android:icon="@drawable/ic_teacher"
+        android:title="@string/teachers"
+        app:cnb_iconColor="#2196F3">
+    </item>
+    <item
+        android:id="@+id/auditorium"
+        android:icon="@drawable/ic_aud"
+        android:title="@string/auditorium"
+        app:cnb_iconColor="#2196F3">
+    </item>
+    <item
+        android:id="@+id/settings"
+        android:icon="@drawable/ic_settings"
+        android:title="@string/settings"
+        app:cnb_iconColor="#2196F3">
+    </item>
+</menu>
