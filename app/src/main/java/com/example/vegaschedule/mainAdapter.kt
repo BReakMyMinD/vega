@@ -50,7 +50,7 @@ class mainPagerAdapter(fm: FragmentManager): FragmentPagerAdapter(fm) {
                                   savedInstanceState: Bundle?) : View? {
             var rootView = LayoutInflater.from(context).inflate(R.layout.fragment_collection_object,
                 null, false)
-            rootView.text1.text = param
+          //  rootView.text1.text = param
             return rootView
         }
     }

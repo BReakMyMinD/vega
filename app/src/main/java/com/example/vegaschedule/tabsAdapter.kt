@@ -52,8 +52,8 @@ class DemoObjectFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         arguments?.takeIf { it.containsKey(ARG_OBJECT) }?.apply {
-            val textView: TextView = view.findViewById(R.id.text1)
-            textView.text = getInt(ARG_OBJECT).toString()
+           /* val textView: TextView = view.findViewById(R.id.text1)
+            textView.text = getInt(ARG_OBJECT).toString() */
         }
     }
 }

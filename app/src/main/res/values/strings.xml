@@ -57,5 +57,8 @@
     <string name="teachers">Преподаватель</string>
     <string name="schedule">Расписание</string>
 
+    <string name="groupChoice">Выберите группу…</string>
+    <string name="subGroupChoice">Выберите подгруппу…</string>
+
 
 </resources>
