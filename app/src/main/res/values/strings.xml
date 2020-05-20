@@ -40,9 +40,14 @@
     <string name="subGroupNameSpinner">Выбор подгруппы</string>
     <string name="weekNameSpinner">Выбор недели</string>
 
-    <string-array name="subGroups">
-        <item>1</item>
-        <item>2</item>
+
+    <string-array name="dayOfWeek">
+        <item>"ПН"</item>
+        <item>"ВТ"</item>
+        <item>"СР"</item>
+        <item>"ЧТ"</item>
+        <item>"ПТ"</item>
+        <item>"СБ"</item>
     </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->

@@ -18,5 +18,12 @@ class SettingsFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_settings, container, false)
     }
+    companion object{
+        @JvmStatic
+        fun newInstance(param: String) = SettingsFragment().apply{
+            arguments = Bundle().apply {
 
+            }
+        }
+    }
 }
