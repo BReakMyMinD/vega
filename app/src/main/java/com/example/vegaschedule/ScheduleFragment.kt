@@ -1,12 +1,16 @@
 package com.example.vegaschedule
 
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import androidx.annotation.RequiresApi
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
+import kotlinx.android.synthetic.main.fragment_schedule.*
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -21,14 +25,27 @@ class ScheduleFragment(private val activity : MainActivity) : Fragment() {
         return inflater.inflate(R.layout.fragment_schedule, container, false)
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val tabLayout: TabLayout = view.findViewById(R.id.tabLayout)
         val viewPager: ViewPager = view.findViewById(R.id.viewPager)
         viewPager.adapter = DemoCollectionPagerAdapter(childFragmentManager, activity)
         tabLayout.setupWithViewPager(viewPager)
+        viewPager.currentItem = activity.getCurrentDay()
+        viewPager.offscreenPageLimit = 6
+        //viewPager.setOnPageChangeListener()
+        if(scheduleWeekSpinner != null) {
+            val adapter = ArrayAdapter(activity, android.R.layout.simple_spinner_item, activity.scheduleInstance.getWeeks())
+            scheduleWeekSpinner.adapter = adapter
+        }
+        scheduleWeekSpinner.setSelection(activity.getCurrentWeek() - 1)
+
+
 
     }
+
+
 
     companion object{
         @JvmStatic

@@ -56,9 +56,10 @@
     <string name="auditorium">Аудитория</string>
     <string name="teachers">Преподаватель</string>
     <string name="schedule">Расписание</string>
-
-    <string name="groupChoice">Выберите группу…</string>
-    <string name="subGroupChoice">Выберите подгруппу…</string>
+    <string name="teacher">Введите имя преподавателя</string>
+    <string name="searchAuditorium">Введите номер аудитории</string>
+    <string name="groupChoice">Выберите группу</string>
+    <string name="subGroupChoice">Выберите подгруппу</string>
 
 
 </resources>

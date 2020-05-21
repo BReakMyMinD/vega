@@ -19,6 +19,7 @@ data class Group(
 
 data class Settings(
     val firstWeekDate: String,
+    val subgroupCount: Int,
     val maxPar: Int
 )
 

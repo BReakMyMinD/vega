@@ -5,9 +5,13 @@ import android.content.SharedPreferences
 
 class SettingsStorage(private val context: Context, private val defaultGroup: String) {
     //сохраняет заданные настройки в локальном хранилище устройства
-    fun saveSettings(group: String, subgroup: Int) {
+    fun saveGroup(group: String) {
         val editor = pref.edit()
         editor.putString("Group", group)
+        editor.apply()
+    }
+    fun saveSubgroup(subgroup: Int) {
+        val editor = pref.edit()
         editor.putInt("Subgroup", subgroup)
         editor.apply()
     }

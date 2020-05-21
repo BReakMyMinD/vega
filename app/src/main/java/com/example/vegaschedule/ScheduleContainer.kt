@@ -52,6 +52,29 @@ class ScheduleContainer(private val provider: Provider) {
             return arr
         }
     }
+
+    fun getAuditoriumSchedule(name: String, day: String, week: Int): Array<Par?> {
+        val maxPar = data?.settings?.maxPar ?: 6
+        val arr: Array<Par?> = arrayOfNulls(maxPar)
+        try {
+            loop@ for (group in data?.groups!!) {
+                val dayObj = group.days.find{ it.day == day }
+                val parList = dayObj?.pars?.filter{ it.place?.contains(name) ?: false
+                        && checkPar(it, day, week) }
+                if(parList.isNullOrEmpty()) {
+                    continue@loop
+                }
+                else {
+                    for(par in parList) {
+                        arr[par.number - 1] = par
+                    }
+                    break@loop
+                }
+            }
+        } finally {
+            return arr
+        }
+    }
     //возвращает список групп
     fun getGroups(): MutableList<String>{
         val list = arrayListOf<String>()
@@ -62,6 +85,14 @@ class ScheduleContainer(private val provider: Provider) {
         }
         catch(e: NullPointerException) {
             list.add("Corrupted data")
+        }
+        return list
+    }
+
+    fun getSubgroups(): MutableList<Int> {
+        val list = arrayListOf<Int>()
+        for(count in 1..data?.settings?.subgroupCount as Int) {
+            list.add(count)
         }
         return list
     }

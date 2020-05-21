@@ -1,6 +1,7 @@
 {
           "settings": {
             "firstWeekDate": "10.02.2020",
+            "subgroupCount": 2,
             "maxPar": 7
           },
           "const": {
@@ -214,7 +215,7 @@
                       "weekSettings": "all"
                     },
                     {
-                      "name": "кмбо0219 2 вт 2пг",
+                      "name": "кмбо0519 2 вт 2пг",
                       "number": 2,
                       "place": "Б-209",
                       "type": "лк",
@@ -222,7 +223,7 @@
                       "weekSettings": "all"
                     },
                     {
-                      "name": "кмбо0219 3 вт кроме 9 и 11",
+                      "name": "кмбо0519 3 вт кроме 9 и 11",
                       "type": "лк",
                       "number": 3,
                       "place": "Г-102",

@@ -6,60 +6,61 @@
     android:layout_height="match_parent"
     tools:context=".SettingsFragment">
 
-    <TextView
-        android:id="@+id/groupChoice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="176dp"
-        android:layout_marginTop="120dp"
-        android:layout_marginEnd="176dp"
-        android:layout_marginBottom="624dp"
-        android:text="@string/groupChoice"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/groupSpinner"
-        app:layout_constraintVertical_bias="0.738" />
-
-    <Spinner
-        android:id="@+id/groupSpinner"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="130dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="131dp"
-        android:layout_marginBottom="77dp"
-        app:layout_constraintBottom_toTopOf="@+id/subGroupChoice"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="387dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="116dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="3dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/groupChoice" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/subGroupChoice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="177dp"
-        android:layout_marginTop="77dp"
-        android:layout_marginEnd="176dp"
-        android:layout_marginBottom="70dp"
-        android:text="@string/subGroupChoice"
-        app:layout_constraintBottom_toTopOf="@+id/subGroupSpinner"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/groupSpinner" />
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/groupChoice"
+            android:textSize="18sp" />
 
-    <Spinner
-        android:id="@+id/subGroupSpinner"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="120dp"
+        <Spinner
+            android:id="@+id/spinner3"
+            android:layout_width="2dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="386dp"
+        android:layout_height="178dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginBottom="428dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/subGroupChoice" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/subGroupChoice"
+            android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/spinner4"
+            android:layout_width="27dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

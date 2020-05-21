@@ -8,8 +8,8 @@
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
-        android:layout_width="389dp"
-        android:layout_height="676dp"
+        android:layout_width="385dp"
+        android:layout_height="597dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
@@ -18,7 +18,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.618">
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
@@ -35,4 +35,17 @@
         </com.google.android.material.tabs.TabLayout>
 
     </androidx.viewpager.widget.ViewPager>
+
+    <Spinner
+        android:id="@+id/scheduleWeekSpinner"
+        android:layout_width="391dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/viewPager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
