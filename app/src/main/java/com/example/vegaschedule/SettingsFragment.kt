@@ -9,7 +9,7 @@ import android.view.ViewGroup
 /**
  * A simple [Fragment] subclass.
  */
-class SettingsFragment : Fragment() {
+class SettingsFragment(private val activity: MainActivity) : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -20,10 +20,6 @@ class SettingsFragment : Fragment() {
     }
     companion object{
         @JvmStatic
-        fun newInstance(param: String) = SettingsFragment().apply{
-            arguments = Bundle().apply {
-
-            }
-        }
+        fun newInstance(param: MainActivity) = SettingsFragment(param)
     }
 }

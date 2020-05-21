@@ -11,7 +11,7 @@ import com.google.android.material.tabs.TabLayout
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-class ScheduleFragment : Fragment() {
+class ScheduleFragment(private val activity : MainActivity) : Fragment() {
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -25,17 +25,13 @@ class ScheduleFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val tabLayout: TabLayout = view.findViewById(R.id.tabLayout)
         val viewPager: ViewPager = view.findViewById(R.id.viewPager)
-        viewPager.adapter = DemoCollectionPagerAdapter(childFragmentManager)
+        viewPager.adapter = DemoCollectionPagerAdapter(childFragmentManager, activity)
         tabLayout.setupWithViewPager(viewPager)
 
     }
 
     companion object{
         @JvmStatic
-        fun newInstance(param: String) = ScheduleFragment().apply{
-            arguments = Bundle().apply {
-
-            }
-        }
+        fun newInstance(param : MainActivity) = ScheduleFragment(param)
     }
 }

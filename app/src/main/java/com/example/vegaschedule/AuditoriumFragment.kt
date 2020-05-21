@@ -11,7 +11,7 @@ import com.google.android.material.tabs.TabLayout
 /**
  * A simple [Fragment] subclass.
  */
-class AuditoriumFragment : Fragment() {
+class AuditoriumFragment(private val activity : MainActivity) : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,16 +25,12 @@ class AuditoriumFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val tabLayout: TabLayout = view.findViewById(R.id.tabLayout)
         val viewPager: ViewPager = view.findViewById(R.id.viewPager)
-        viewPager.adapter = DemoCollectionPagerAdapter(childFragmentManager)
+        viewPager.adapter = DemoCollectionPagerAdapter(childFragmentManager, activity)
         tabLayout.setupWithViewPager(viewPager)
     }
 
     companion object{
         @JvmStatic
-        fun newInstance(param: String) = AuditoriumFragment().apply{
-            arguments = Bundle().apply {
-
-            }
-        }
+        fun newInstance(param: MainActivity) = AuditoriumFragment(param)
     }
 }
