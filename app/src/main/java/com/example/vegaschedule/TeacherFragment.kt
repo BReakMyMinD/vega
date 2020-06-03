@@ -32,12 +32,10 @@ class TeacherFragment(private val activity : MainActivity) : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val tabLayout: TabLayout = view.findViewById(R.id.tabLayout)
         val viewPager: ViewPager = view.findViewById(R.id.viewPager)
-        viewPager.adapter = DemoCollectionPagerAdapter(childFragmentManager, activity)
+        viewPager.adapter = DemoCollectionPagerAdapter(childFragmentManager, activity, this)
         tabLayout.setupWithViewPager(viewPager)
+        //viewPager.offscreenPageLimit = 6
 
-        editText.addTextChangedListener {
-            activity.teacherSearch = editText.text.toString()
-        }
 
         if(teacherWeekSpinner != null) {
             val adapter = ArrayAdapter(activity, android.R.layout.simple_spinner_item, activity.scheduleInstance.getWeeks())

@@ -8,6 +8,7 @@ import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.viewpager.widget.ViewPager
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.toolbar
@@ -15,6 +16,7 @@ import kotlinx.android.synthetic.main.fragment_auditorium.*
 import kotlinx.android.synthetic.main.fragment_schedule.*
 import kotlinx.android.synthetic.main.fragment_teacher.*
 import kotlin.collections.ArrayList
+import kotlin.properties.Delegates.observable
 
 
 class MainActivity : AppCompatActivity() {
@@ -27,13 +29,14 @@ class MainActivity : AppCompatActivity() {
         scheduleInstance = ScheduleContainer(fileProvider)
         scheduleInstance.loadData()
         settingsStorage = SettingsStorage(this, scheduleInstance.getGroups().first())
-
+        mainPager.setSwipePagingEnabled(false)
 
         bottom_menu.setOnItemSelectedListener { id ->
 
             when(id) {
                 R.id.schedule -> {
                     mainPager.currentItem = 0
+
                     title = "Расписание"
                 }
                 R.id.teacher -> {
@@ -53,7 +56,9 @@ class MainActivity : AppCompatActivity() {
             currentDock = mainPager.currentItem
         }
 
-        //mainPager.setOnTouchListener(View.OnTouchListener { v, event -> true })
+        bottom_menu.setItemSelected(0)
+
+
         mainPager.adapter = mainPagerAdapter(supportFragmentManager, this).apply{
             list = ArrayList<String>().apply {
                 add("Расписание")
@@ -63,17 +68,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-
-
-
-
-        /*val pager: ViewPager = findViewById(R.id.viewPager)
-        val tabLayout: TabLayout = findViewById(R.id.tabLayout)
-
-
-        pager.adapter = DemoCollectionPagerAdapter(supportFragmentManager)
-        tabLayout.setupWithViewPager(pager)*/
     }
+
+
 
     fun getChosenScheduleWeek(): Int {
         return scheduleWeekSpinner.selectedItem.toString().toInt()
@@ -114,6 +111,9 @@ class MainActivity : AppCompatActivity() {
         }
         else {
             weeks = 0
+        }
+        if(weeks > 16) {
+            weeks = 16
         }
         return weeks
     }

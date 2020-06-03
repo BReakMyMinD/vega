@@ -33,6 +33,9 @@ class ScheduleContainer(private val provider: Provider) {
     fun getTeacherSchedule(name: String, day: String, week: Int): Array<Par?> {
         val maxPar = data?.settings?.maxPar ?: 6
         val arr: Array<Par?> = arrayOfNulls(maxPar)
+        if(name == "") {
+            return arr
+        }
         try {
             loop@ for (group in data?.groups!!) {
                 val dayObj = group.days.find{ it.day == day }
@@ -52,24 +55,48 @@ class ScheduleContainer(private val provider: Provider) {
             return arr
         }
     }
-
-    fun getAuditoriumSchedule(name: String, day: String, week: Int): Array<Par?> {
+    //возвращает пары, когда аудитория Б209 свободна
+    fun getAuditoriumSchedule(day: String, week: Int): Array<Par?> {
         val maxPar = data?.settings?.maxPar ?: 6
         val arr: Array<Par?> = arrayOfNulls(maxPar)
+
         try {
             loop@ for (group in data?.groups!!) {
                 val dayObj = group.days.find{ it.day == day }
-                val parList = dayObj?.pars?.filter{ it.place?.contains(name) ?: false
+                val parList = dayObj?.pars?.filter{ it.place?.contains("Б-209") ?: false
                         && checkPar(it, day, week) }
-                if(parList.isNullOrEmpty()) {
-                    continue@loop
-                }
-                else {
+
+                if (!parList.isNullOrEmpty()) {
+                    var firstParNum: Int = maxPar
+                    var lastParNum: Int = 0
                     for(par in parList) {
-                        arr[par.number - 1] = par
+                        if(firstParNum >= par.number) {
+                            firstParNum = par.number
+                        }
+                        if(lastParNum <= par.number) {
+                            lastParNum = par.number
+                        }
                     }
-                    break@loop
+                    for(par in parList) {
+
+                        if(par.place == "Б-209Л"){
+                            val emptyParObj: Par = Par("Аудитория свободна", par.number, "Правая", "Б-209", null, null, "all", null)
+                            arr[par.number - 1] = emptyParObj
+                        }
+                        else if(par.place == "Б-209П") {
+                            val emptyParObj: Par = Par("Аудитория свободна", par.number, "Левая", "Б-209", null, null, "all", null)
+                            arr[par.number - 1] = emptyParObj
+                        }
+                    }
+                    for(parNum in 1..maxPar) {
+
+                        if(arr[parNum] == null && lastParNum > parNum && firstParNum < parNum) {
+                            val emptyParObj: Par = Par("Аудитория свободна", parNum, "Целиком", "Б-209", null, null, "all", null)
+                            arr[parNum - 1] = emptyParObj
+                        }
+                    }
                 }
+
             }
         } finally {
             return arr
@@ -100,6 +127,10 @@ class ScheduleContainer(private val provider: Provider) {
     fun getPairTime(number: Int): String {
         val times = data?.const?.timePar.toString().split(',')
         return times[number - 1].substringAfter('=').split('-').first()
+    }
+    fun getPairFinishTime(number: Int): String {
+        val times = data?.const?.timePar.toString().split(',')
+        return times[number - 1].substringAfter('=').split('-').last()
     }
 
     fun getFirstWeek(): String? {

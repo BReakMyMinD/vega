@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml:2:1-25:12
-INJECTED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml:2:1-25:12
-INJECTED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml:2:1-25:12
-INJECTED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml:2:1-25:12
+ADDED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml:2:1-26:12
+INJECTED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml:2:1-26:12
+INJECTED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml:2:1-26:12
+INJECTED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml:2:1-26:12
 MERGED from [androidx.navigation:navigation-ui-ktx:2.2.2] C:\Users\Xiaomi\.gradle\caches\transforms-2\files-2.1\cf2e6c29c8c9888fdec3c0f3b6c812b6\navigation-ui-ktx-2.2.2\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.navigation:navigation-ui:2.2.2] C:\Users\Xiaomi\.gradle\caches\transforms-2\files-2.1\b190acf2ae74eed7eace3d4f5b154e2b\navigation-ui-2.2.2\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\Xiaomi\.gradle\caches\transforms-2\files-2.1\a28e3071b49cd303c87ab88f035299ad\material-1.1.0\AndroidManifest.xml:17:1-24:12
@@ -58,20 +58,20 @@ MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] C:\Users\Xiaomi\.gradle
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\Xiaomi\.gradle\caches\transforms-2\files-2.1\2b76bbbf1f93cbf5dadfb1df63fad850\lifecycle-livedata-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.2.0] C:\Users\Xiaomi\.gradle\caches\transforms-2\files-2.1\376def708fb6281d6ba3088f080671d7\lifecycle-livedata-core-2.2.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.arch.core:core-runtime:2.1.0] C:\Users\Xiaomi\.gradle\caches\transforms-2\files-2.1\6ba631e2a83457d93ff6835fab260e17\core-runtime-2.1.0\AndroidManifest.xml:17:1-24:12
-INJECTED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml:2:1-25:12
-INJECTED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml:2:1-25:12
-INJECTED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml:2:1-25:12
+INJECTED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml:2:1-26:12
+INJECTED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml:2:1-26:12
+INJECTED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml:2:1-26:12
 	package
 		ADDED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml:3:5-39
 		INJECTED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml:2:1-25:12
+		ADDED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml:2:1-26:12
 		INJECTED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml:2:1-25:12
+		ADDED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml:2:1-26:12
 		INJECTED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml:2:11-69
@@ -84,7 +84,7 @@ ADDED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\Andr
 	android:name
 		ADDED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml:5:22-76
 application
-ADDED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml:6:5-23:19
+ADDED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml:6:5-24:19
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\Xiaomi\.gradle\caches\transforms-2\files-2.1\a28e3071b49cd303c87ab88f035299ad\material-1.1.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\Xiaomi\.gradle\caches\transforms-2\files-2.1\a28e3071b49cd303c87ab88f035299ad\material-1.1.0\AndroidManifest.xml:22:5-20
 MERGED from [com.fxn769:ariana:1.0] C:\Users\Xiaomi\.gradle\caches\transforms-2\files-2.1\da8e9c145da633cb71f55b364724211b\jetified-ariana-1.0\AndroidManifest.xml:11:5-15:19
@@ -110,23 +110,25 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Xi
 	android:theme
 		ADDED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml:12:9-40
 activity#com.example.vegaschedule.MainActivity
-ADDED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml:13:9-22:20
+ADDED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml:13:9-23:20
 	android:label
 		ADDED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml:15:13-45
+	android:windowSoftInputMode
+		ADDED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml:17:13-52
 	android:theme
 		ADDED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml:16:13-56
 	android:name
 		ADDED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml:14:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml:17:13-21:29
+ADDED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml:18:13-22:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml:18:17-69
+ADDED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml:19:17-69
 	android:name
-		ADDED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml:18:25-66
+		ADDED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml:19:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml:20:17-77
+ADDED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml:21:17-77
 	android:name
-		ADDED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml:20:27-74
+		ADDED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml:21:27-74
 uses-sdk
 INJECTED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Xiaomi\AndroidStudioProjects\vega-schedule\app\src\main\AndroidManifest.xml
