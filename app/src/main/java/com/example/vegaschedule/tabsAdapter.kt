@@ -7,20 +7,13 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.annotation.RequiresApi
-import androidx.cardview.widget.CardView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.viewpager.widget.ViewPager
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_collection_object.*
-import kotlinx.android.synthetic.main.fragment_collection_object.view.*
 import kotlinx.android.synthetic.main.fragment_teacher.*
 
 
@@ -29,16 +22,16 @@ class DemoCollectionPagerAdapter(fm: FragmentManager, private val activity: Main
     override fun getCount(): Int  = 6
 
     override fun getItem(i: Int): Fragment {
-        val fragment = DemoObjectFragment(activity, parent)
+        val fragment = DayFragment(activity, parent)
         fragment.arguments = Bundle().apply {
-            // Our object is just an integer :-P
+
+
             putInt(ARG_OBJECT, i + 1)
 
 
         }
         return fragment
     }
-
 
     override fun getPageTitle(position: Int): CharSequence {
         return when(position) {
@@ -57,7 +50,7 @@ private const val ARG_OBJECT = "object"
 
 // Instances of this class are fragments representing a single
 // object in our collection.
-class DemoObjectFragment(private val activity: MainActivity, private val parent: Fragment) : Fragment() {
+class DayFragment(private val activity: MainActivity, private val parent: Fragment) : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
@@ -85,6 +78,7 @@ class DemoObjectFragment(private val activity: MainActivity, private val parent:
 
             fun setUI() {
                     println(activity.mainPager.currentItem)
+                    println(day)
                     when (activity.mainPager.currentItem) {
                         0 -> {
 
@@ -244,7 +238,6 @@ class DemoObjectFragment(private val activity: MainActivity, private val parent:
                             }
                         }
                         2 -> {
-                            activity.bottom_menu.setItemSelected(2)
                             val dayPars = schedule.getAuditoriumSchedule(
                                 day,
                                 activity.getChosenAuditoriumWeek()
@@ -324,6 +317,7 @@ class DemoObjectFragment(private val activity: MainActivity, private val parent:
 
             }
             setUI()
+
             parent.viewPager.addOnPageChangeListener(object: ViewPager.OnPageChangeListener {
                 override fun onPageSelected(position: Int) {
                     setUI()

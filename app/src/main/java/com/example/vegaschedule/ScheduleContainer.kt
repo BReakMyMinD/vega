@@ -79,11 +79,11 @@ class ScheduleContainer(private val provider: Provider) {
                     }
                     for(par in parList) {
 
-                        if(par.place == "Б-209Л"){
+                        if(par.place == "Б-209л"){
                             val emptyParObj: Par = Par("Аудитория свободна", par.number, "Правая", "Б-209", null, null, "all", null)
                             arr[par.number - 1] = emptyParObj
                         }
-                        else if(par.place == "Б-209П") {
+                        else if(par.place == "Б-209п") {
                             val emptyParObj: Par = Par("Аудитория свободна", par.number, "Левая", "Б-209", null, null, "all", null)
                             arr[par.number - 1] = emptyParObj
                         }

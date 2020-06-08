@@ -28,11 +28,11 @@ class ScheduleFragment(private val activity : MainActivity) : Fragment() {
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val tabLayout: TabLayout = view.findViewById(R.id.tabLayout)
-        val viewPager: ViewPager = view.findViewById(R.id.viewPager)
-        viewPager.adapter = DemoCollectionPagerAdapter(childFragmentManager, activity, this)
-        tabLayout.setupWithViewPager(viewPager)
-        viewPager.currentItem = activity.getCurrentDay()
+        tabLayout = view.findViewById(R.id.tabLayout)
+        weekPager = view.findViewById(R.id.viewPager)
+        weekPager.adapter = DemoCollectionPagerAdapter(childFragmentManager, activity, this)
+        tabLayout.setupWithViewPager(weekPager)
+        weekPager.currentItem = activity.getCurrentDay()
         //viewPager.offscreenPageLimit = 6
         //viewPager.setOnPageChangeListener()
         if(scheduleWeekSpinner != null) {
@@ -51,4 +51,6 @@ class ScheduleFragment(private val activity : MainActivity) : Fragment() {
         @JvmStatic
         fun newInstance(param : MainActivity) = ScheduleFragment(param)
     }
+    lateinit var weekPager: ViewPager
+    lateinit var tabLayout: TabLayout
 }

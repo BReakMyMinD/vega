@@ -56,7 +56,7 @@ data class Day(
 data class Par(
     val name: String,
     val number: Int,
-    val type: String,
+    val type: String? = null,
     val place: String? = null,//аудитория(если есть)
     val pr: String? = null,//преподаватель(если есть)
     val subgroup: Int? = null,//подгруппа(если есть)

@@ -56,8 +56,8 @@ class MainActivity : AppCompatActivity() {
             currentDock = mainPager.currentItem
         }
 
-        bottom_menu.setItemSelected(0)
-
+        bottom_menu.setItemSelected(R.id.schedule)
+        bottom_menu.performClick()
 
         mainPager.adapter = mainPagerAdapter(supportFragmentManager, this).apply{
             list = ArrayList<String>().apply {

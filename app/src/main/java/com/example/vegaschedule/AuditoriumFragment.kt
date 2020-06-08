@@ -31,10 +31,11 @@ class AuditoriumFragment(private val activity : MainActivity) : Fragment() {
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val tabLayout: TabLayout = view.findViewById(R.id.tabLayout)
-        val viewPager: ViewPager = view.findViewById(R.id.viewPager)
-        viewPager.adapter = DemoCollectionPagerAdapter(childFragmentManager, activity, this)
-        tabLayout.setupWithViewPager(viewPager)
+        tabLayout = view.findViewById(R.id.tabLayout)
+        weekPager = view.findViewById(R.id.viewPager)
+        weekPager.adapter = DemoCollectionPagerAdapter(childFragmentManager, activity, this)
+        weekPager.currentItem = activity.getCurrentDay()
+        tabLayout.setupWithViewPager(weekPager)
         //viewPager.offscreenPageLimit = 6
 
         if(auditoriumWeekSpinner != null) {
@@ -48,4 +49,6 @@ class AuditoriumFragment(private val activity : MainActivity) : Fragment() {
         @JvmStatic
         fun newInstance(param: MainActivity) = AuditoriumFragment(param)
     }
+    lateinit var weekPager: ViewPager
+    lateinit var tabLayout: TabLayout
 }
