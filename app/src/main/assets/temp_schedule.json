@@ -52,7 +52,7 @@
               "name": "Прогр. в ЗРЛ",
               "number": 5,
               "place": "Б-209",
-              "weekSettings": "odd"
+              "weekSettings": "odd",
               "subgroup": 2
             },
             {
@@ -71,7 +71,7 @@
               "name": "Прогр. в ЗРЛ",
               "number": 1,
               "place": "Б-209п",
-              "weekSettings": "even"
+              "weekSettings": "even",
               "subgroup": 1
             },
             {
@@ -285,7 +285,7 @@
               "name": "Прогр. в ЗРЛ",
               "number": 2,
               "place": "Б-209",
-              "weekSettings": "even"
+              "weekSettings": "even",
               "subgroup": 1
             },
             {
@@ -300,7 +300,8 @@
               "type": "лекция",
               "number": 3,
               "place": "А-15",
-              "weekSettings": "all"
+              "weekSettings": "all",
+              "pr": "Адамович О.М."
             },
             {
               "name": "Ин. язык",
@@ -313,7 +314,8 @@
               "type": "практика",
               "number": 5,
               "place": "А-211",
-              "weekSettings": "all"
+              "weekSettings": "all",
+              "pr": "Адамович О.М."
             }
           ]
         },
@@ -331,7 +333,7 @@
               "type": "практика",
               "number": 2,
               "place": "А-318",
-              "weekSettings": "only"
+              "weekSettings": "only",
               "weeks": [10]
             },
             {
@@ -468,7 +470,7 @@
               "name": "Языки и МП",
               "number": 3,
               "place": "Б-209п",
-              "weekSettings": "odd"
+              "weekSettings": "odd",
               "subgroup": 1
             },
             {
@@ -561,7 +563,7 @@
               "type": "практика",
               "number": 4,
               "place": "Б-209п",
-              "weekSettings": "even"
+              "weekSettings": "even",
               "subgroup": 2
             },
             {
@@ -569,7 +571,7 @@
               "type": "лабораторная",
               "number": 4,
               "place": "Б-209л",
-              "weekSettings": "odd"
+              "weekSettings": "odd",
               "subgroup": 1
             },
             {
