@@ -6,7 +6,6 @@ before_script:
 
 stages:
   - build
-  - deploy
 
 build: 
     stage: build 
@@ -16,12 +15,3 @@ build:
        paths:
        - app/build/outputs/
     
-      
-pages:
-  stage: deploy
-  script:
-  - ./gradlew dokka 
-  - mv app/build/doc/app/ public/
-  artifacts:
-     paths:
-      - public
