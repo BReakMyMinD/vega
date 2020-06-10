@@ -5,8 +5,8 @@ before_script:
 
 
 stages:
-  -build
-  -deploy
+  - build
+  - deploy
 
 build: 
     stage: build 
