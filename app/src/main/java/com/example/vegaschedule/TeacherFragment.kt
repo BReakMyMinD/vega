@@ -35,6 +35,7 @@ class TeacherFragment(private val activity : MainActivity) : Fragment() {
         weekPager.adapter = DemoCollectionPagerAdapter(childFragmentManager, activity, this)
         weekPager.currentItem = activity.getCurrentDay()
         tabLayout.setupWithViewPager(weekPager)
+
         //viewPager.offscreenPageLimit = 6
 
 

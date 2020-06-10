@@ -37,14 +37,18 @@ class MainActivity : AppCompatActivity() {
                 R.id.schedule -> {
                     mainPager.currentItem = 0
 
+
                     title = "Расписание"
                 }
                 R.id.teacher -> {
                     mainPager.currentItem = 1
+
+
                     title = "Поиск преподавателя"
                 }
                 R.id.auditorium -> {
                     mainPager.currentItem = 2
+
                     title = "Поиск свободной аудитории"
                 }
                 R.id.settings -> {
@@ -54,6 +58,7 @@ class MainActivity : AppCompatActivity() {
 
             }
             currentDock = mainPager.currentItem
+            mainPager.animate()
         }
 
         bottom_menu.setItemSelected(R.id.schedule)
@@ -124,7 +129,7 @@ class MainActivity : AppCompatActivity() {
 
 
     var currentDock : Int = 0
-    var teacherSearch: String = ""
+
 }
 
 

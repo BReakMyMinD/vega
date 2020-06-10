@@ -33,7 +33,7 @@ class ScheduleContainer(private val provider: Provider) {
     fun getTeacherSchedule(name: String, day: String, week: Int): Array<Par?> {
         val maxPar = data?.settings?.maxPar ?: 6
         val arr: Array<Par?> = arrayOfNulls(maxPar)
-        if(name == "") {
+        if(name.isEmpty()) {
             return arr
         }
         try {

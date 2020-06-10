@@ -16,6 +16,7 @@ class SwipeLockableViewPager(context: Context, attrs: AttributeSet): ViewPager(c
         }
     }
 
+
     override fun onInterceptTouchEvent(event: MotionEvent): Boolean {
         return when (swipeEnabled) {
             true -> super.onInterceptTouchEvent(event)

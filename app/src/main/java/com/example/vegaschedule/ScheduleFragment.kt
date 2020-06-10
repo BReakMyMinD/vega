@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter
 import androidx.annotation.RequiresApi
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_schedule.*
 
 /**
@@ -31,6 +32,7 @@ class ScheduleFragment(private val activity : MainActivity) : Fragment() {
         tabLayout = view.findViewById(R.id.tabLayout)
         weekPager = view.findViewById(R.id.viewPager)
         weekPager.adapter = DemoCollectionPagerAdapter(childFragmentManager, activity, this)
+
         tabLayout.setupWithViewPager(weekPager)
         weekPager.currentItem = activity.getCurrentDay()
         //viewPager.offscreenPageLimit = 6
@@ -49,7 +51,7 @@ class ScheduleFragment(private val activity : MainActivity) : Fragment() {
 
     companion object{
         @JvmStatic
-        fun newInstance(param : MainActivity) = ScheduleFragment(param)
+        fun newInstance(param : MainActivity) = ScheduleFragment(param) //pass external param for mainpagerid
     }
     lateinit var weekPager: ViewPager
     lateinit var tabLayout: TabLayout

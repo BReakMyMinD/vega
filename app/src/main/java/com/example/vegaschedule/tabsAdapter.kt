@@ -29,6 +29,7 @@ class DemoCollectionPagerAdapter(fm: FragmentManager, private val activity: Main
             putInt(ARG_OBJECT, i + 1)
 
 
+
         }
         return fragment
     }
@@ -46,7 +47,8 @@ class DemoCollectionPagerAdapter(fm: FragmentManager, private val activity: Main
     }
 }
 
-private const val ARG_OBJECT = "object"
+private const val ARG_OBJECT = "view"
+private const val ARG_MAIN = "main"
 
 // Instances of this class are fragments representing a single
 // object in our collection.
@@ -61,7 +63,7 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
 
 
     @RequiresApi(Build.VERSION_CODES.N)
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) { //Класс иногда не пересоздается при переключении между вкладками, но должен
         arguments?.takeIf { it.containsKey(ARG_OBJECT) }?.apply {
             val layout = pairLayout
             val schedule = activity.scheduleInstance
@@ -77,10 +79,16 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
             }
 
             fun setUI() {
-                    println(activity.mainPager.currentItem)
-                    println(day)
-                    when (activity.mainPager.currentItem) {
-                        0 -> {
+                    println("setui called")
+                    if(Card1 != null) Card1.visibility = View.VISIBLE
+                    if(Card2 != null) Card2.visibility = View.VISIBLE
+                    if(Card3 != null) Card3.visibility = View.VISIBLE
+                    if(Card4 != null) Card4.visibility = View.VISIBLE
+                    if(Card5 != null) Card5.visibility = View.VISIBLE
+                    if(Card6 != null) Card6.visibility = View.VISIBLE
+                    if(Card7 != null) Card7.visibility = View.VISIBLE
+                    when (parent) {//баг вот тут был
+                        is ScheduleFragment -> {
 
                             val dayPars = schedule.getDaySchedule(
                                 settings.getGroup(),
@@ -159,10 +167,10 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
                                 if(Card7 != null) Card7.visibility = View.GONE
                             }
                         }
-                        1 -> {
+                        is TeacherFragment -> {
 
                             val dayPars = schedule.getTeacherSchedule(
-                                activity.teacherSearch,
+                                teacherSearchQuery,
                                 day,
                                 activity.getChosenTeacherWeek()
                             )
@@ -237,7 +245,7 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
                                 if(Card7 != null) Card7.visibility = View.GONE
                             }
                         }
-                        2 -> {
+                        is AuditoriumFragment -> {
                             val dayPars = schedule.getAuditoriumSchedule(
                                 day,
                                 activity.getChosenAuditoriumWeek()
@@ -318,40 +326,6 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
             }
             setUI()
 
-            parent.viewPager.addOnPageChangeListener(object: ViewPager.OnPageChangeListener {
-                override fun onPageSelected(position: Int) {
-                    setUI()
-                }
-
-                override fun onPageScrollStateChanged(state: Int) {
-                    //To change body of created functions use File | Settings | File Templates.
-                }
-
-                override fun onPageScrolled(
-                    position: Int,
-                    positionOffset: Float,
-                    positionOffsetPixels: Int
-                ) {
-                    //To change body of created functions use File | Settings | File Templates.
-                }
-            })
-            activity.mainPager.addOnPageChangeListener(object: ViewPager.OnPageChangeListener {
-                override fun onPageSelected(position: Int) {
-                    setUI()
-                }
-
-                override fun onPageScrollStateChanged(state: Int) {
-                    //To change body of created functions use File | Settings | File Templates.
-                }
-
-                override fun onPageScrolled(
-                    position: Int,
-                    positionOffset: Float,
-                    positionOffsetPixels: Int
-                ) {
-                    //To change body of created functions use File | Settings | File Templates.
-                }
-            })
 
             if(parent is TeacherFragment) {
                 parent.editText.addTextChangedListener(object: TextWatcher {
@@ -369,8 +343,8 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
                     }
 
                     override fun afterTextChanged(s: Editable?) {
-                        activity.teacherSearch = s.toString()
-                        println(activity.teacherSearch)
+                        teacherSearchQuery = s.toString()
+
                         setUI()
                     }
                 })
@@ -379,4 +353,5 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
             }
 
         }
+        private var teacherSearchQuery: String = ""
     }
