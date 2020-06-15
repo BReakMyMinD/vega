@@ -31,24 +31,21 @@ class MainActivity : AppCompatActivity() {
         settingsStorage = SettingsStorage(this, scheduleInstance.getGroups().first())
         mainPager.setSwipePagingEnabled(false)
 
-        bottom_menu.setOnItemSelectedListener { id ->
 
+
+
+        bottom_menu.setOnItemSelectedListener { id ->
             when(id) {
                 R.id.schedule -> {
                     mainPager.currentItem = 0
-
-
                     title = "Расписание"
                 }
                 R.id.teacher -> {
                     mainPager.currentItem = 1
-
-
                     title = "Поиск преподавателя"
                 }
                 R.id.auditorium -> {
                     mainPager.currentItem = 2
-
                     title = "Поиск свободной аудитории"
                 }
                 R.id.settings -> {
@@ -57,12 +54,10 @@ class MainActivity : AppCompatActivity() {
                 }
 
             }
-            currentDock = mainPager.currentItem
-            mainPager.animate()
+
         }
 
-        bottom_menu.setItemSelected(R.id.schedule)
-        bottom_menu.performClick()
+
 
         mainPager.adapter = mainPagerAdapter(supportFragmentManager, this).apply{
             list = ArrayList<String>().apply {
@@ -72,6 +67,18 @@ class MainActivity : AppCompatActivity() {
                 add("Настройки")
             }
         }
+
+        if(settingsStorage.isFirstLaunch()) {
+            bottom_menu.setItemSelected(R.id.settings)
+            mainPager.currentItem = 3
+            title = "Настройки"
+            settingsStorage.firstLaunch()
+        }
+        else {
+            bottom_menu.setItemSelected(R.id.schedule)
+        }
+        bottom_menu.performClick()
+
 
     }
 
@@ -86,6 +93,8 @@ class MainActivity : AppCompatActivity() {
     fun getChosenAuditoriumWeek(): Int {
         return auditoriumWeekSpinner.selectedItem.toString().toInt()
     }
+
+
 
     @RequiresApi(Build.VERSION_CODES.N)
     fun getCurrentDay() : Int{
@@ -127,8 +136,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var scheduleInstance : ScheduleContainer
     lateinit var settingsStorage : SettingsStorage
 
-
-    var currentDock : Int = 0
 
 }
 

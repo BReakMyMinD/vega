@@ -17,18 +17,15 @@ import kotlinx.android.synthetic.main.fragment_collection_object.*
 import kotlinx.android.synthetic.main.fragment_teacher.*
 
 
-class DemoCollectionPagerAdapter(fm: FragmentManager, private val activity: MainActivity, private val parent: Fragment) : FragmentPagerAdapter(fm) {
+class DemoCollectionPagerAdapter(fm: FragmentManager, private val activity: MainActivity, private val parent: Fragment)
+    : FragmentPagerAdapter(fm) {
 
     override fun getCount(): Int  = 6
 
     override fun getItem(i: Int): Fragment {
         val fragment = DayFragment(activity, parent)
         fragment.arguments = Bundle().apply {
-
-
             putInt(ARG_OBJECT, i + 1)
-
-
 
         }
         return fragment
@@ -48,7 +45,6 @@ class DemoCollectionPagerAdapter(fm: FragmentManager, private val activity: Main
 }
 
 private const val ARG_OBJECT = "view"
-private const val ARG_MAIN = "main"
 
 // Instances of this class are fragments representing a single
 // object in our collection.
@@ -63,9 +59,9 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
 
 
     @RequiresApi(Build.VERSION_CODES.N)
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) { //Класс иногда не пересоздается при переключении между вкладками, но должен
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         arguments?.takeIf { it.containsKey(ARG_OBJECT) }?.apply {
-            val layout = pairLayout
+
             val schedule = activity.scheduleInstance
             val settings = activity.settingsStorage
             val day = when(getInt(ARG_OBJECT)) {
@@ -79,7 +75,6 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
             }
 
             fun setUI() {
-                    println("setui called")
                     if(Card1 != null) Card1.visibility = View.VISIBLE
                     if(Card2 != null) Card2.visibility = View.VISIBLE
                     if(Card3 != null) Card3.visibility = View.VISIBLE
@@ -87,7 +82,7 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
                     if(Card5 != null) Card5.visibility = View.VISIBLE
                     if(Card6 != null) Card6.visibility = View.VISIBLE
                     if(Card7 != null) Card7.visibility = View.VISIBLE
-                    when (parent) {//баг вот тут был
+                    when (parent) {
                         is ScheduleFragment -> {
 
                             val dayPars = schedule.getDaySchedule(
@@ -104,7 +99,6 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
                                 auditoriumName1.text = dayPars[0]?.place
                                 teacherName1.text = dayPars[0]?.pr
                             } else {
-                                if(Card1 != null) Card1.visibility = View.GONE
                             }
                             if (dayPars[1] != null && Card2 != null) {
                                 startTime2.text = schedule.getPairTime(2)
@@ -114,7 +108,6 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
                                 auditoriumName2.text = dayPars[1]?.place
                                 teacherName2.text = dayPars[1]?.pr
                             } else {
-                                if(Card2 != null) Card2.visibility = View.GONE
                             }
                             if (dayPars[2] != null && Card3 != null) {
                                 startTime3.text = schedule.getPairTime(3)
@@ -124,7 +117,6 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
                                 auditoriumName3.text = dayPars[2]?.place
                                 teacherName3.text = dayPars[2]?.pr
                             } else {
-                                if(Card3 != null) Card3.visibility = View.GONE
                             }
                             if (dayPars[3] != null && Card4 != null) {
                                 startTime4.text = schedule.getPairTime(4)
@@ -134,7 +126,6 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
                                 auditoriumName4.text = dayPars[3]?.place
                                 teacherName4.text = dayPars[3]?.pr
                             } else {
-                                if(Card4 != null) Card4.visibility = View.GONE
                             }
                             if (dayPars[4] != null && Card5 != null) {
                                 startTime5.text = schedule.getPairTime(5)
@@ -144,7 +135,6 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
                                 auditoriumName5.text = dayPars[4]?.place
                                 teacherName5.text = dayPars[4]?.pr
                             } else {
-                                if(Card5 != null) Card5.visibility = View.GONE
                             }
                             if (dayPars[5] != null && Card6 != null) {
                                 startTime6.text = schedule.getPairTime(6)
@@ -154,7 +144,6 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
                                 auditoriumName6.text = dayPars[5]?.place
                                 teacherName6.text = dayPars[5]?.pr
                             } else {
-                                if(Card6 != null) Card6.visibility = View.GONE
                             }
                             if (dayPars[6] != null && Card7 != null) {
                                 startTime7.text = schedule.getPairTime(7)
@@ -164,87 +153,127 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
                                 auditoriumName7.text = dayPars[6]?.place
                                 teacherName7.text = dayPars[6]?.pr
                             } else {
-                                if(Card7 != null) Card7.visibility = View.GONE
                             }
                         }
                         is TeacherFragment -> {
+                            val dayPars = schedule.getTeacherSchedule(teacherSearchQuery, day, activity.getChosenTeacherWeek())
+                            /*var dayPars: Array<Par?> = arrayOfNulls(7)
+                            var week: Int = activity.getChosenTeacherWeek()
+                            fun isNullArray(arr: Array<Par?>): Boolean {
+                                var size = 0
+                                for(par in arr) {
+                                    if(par == null) {
+                                        size++
+                                    }
+                                }
+                                return size == arr.size
+                            }
+                            fun checkTeacher(dayNum: Int) {
 
-                            val dayPars = schedule.getTeacherSchedule(
-                                teacherSearchQuery,
-                                day,
-                                activity.getChosenTeacherWeek()
-                            )
-                            if (dayPars[0] != null && Card1 != null) {
-                                startTime1.text = schedule.getPairTime(1)
-                                finishTime1.text = schedule.getPairFinishTime(1)
-                                pairType1.text = dayPars[0]?.type
-                                pairName1.text = dayPars[0]?.name
-                                auditoriumName1.text = dayPars[0]?.place
-                                teacherName1.text = dayPars[0]?.pr
-                            } else {
-                                if(Card1 != null) Card1.visibility = View.GONE
+                                var day: String = ""
+                                when(dayNum) {
+                                    1 -> day = "ПН"
+                                    2 -> day = "ВТ"
+                                    3 -> day = "СР"
+                                    4 -> day = "ЧТ"
+                                    5 -> day = "ПТ"
+                                    6 -> day = "СБ"
+                                    else -> {
+                                        day = "ПН"
+                                        if(week < 16) week++
+                                    }
+                                }
+
+                                dayPars = schedule.getTeacherSchedule(
+                                    teacherSearchQuery,
+                                    day,
+                                    week
+                                )
+
+                                if(isNullArray(dayPars)) {
+                                    var dayNum1 = dayNum
+                                    checkTeacher(dayNum1++)
+                                }
+                                else{
+                                    parent.teacherWeekSpinner.setSelection(week - 1)
+                                    parent.weekPager.setCurrentItem(dayNum)
+                                }
                             }
-                            if (dayPars[1] != null && Card2 != null) {
-                                startTime2.text = schedule.getPairTime(2)
-                                finishTime2.text = schedule.getPairFinishTime(2)
-                                pairType2.text = dayPars[1]?.type
-                                pairName2.text = dayPars[1]?.name
-                                auditoriumName2.text = dayPars[1]?.place
-                                teacherName2.text = dayPars[1]?.pr
-                            } else {
-                                if(Card2 != null) Card2.visibility = View.GONE
-                            }
-                            if (dayPars[2] != null && Card3 != null) {
-                                startTime3.text = schedule.getPairTime(3)
-                                finishTime3.text = schedule.getPairFinishTime(3)
-                                pairType3.text = dayPars[2]?.type
-                                pairName3.text = dayPars[2]?.name
-                                auditoriumName3.text = dayPars[2]?.place
-                                teacherName3.text = dayPars[2]?.pr
-                            } else {
-                                if(Card3 != null) Card3.visibility = View.GONE
-                            }
-                            if (dayPars[3] != null && Card4 != null) {
-                                startTime4.text = schedule.getPairTime(4)
-                                finishTime4.text = schedule.getPairFinishTime(4)
-                                pairType4.text = dayPars[3]?.type
-                                pairName4.text = dayPars[3]?.name
-                                auditoriumName4.text = dayPars[3]?.place
-                                teacherName4.text = dayPars[3]?.pr
-                            } else {
-                                if(Card4 != null) Card4.visibility = View.GONE
-                            }
-                            if (dayPars[4] != null && Card5 != null) {
-                                startTime5.text = schedule.getPairTime(5)
-                                finishTime5.text = schedule.getPairFinishTime(5)
-                                pairType5.text = dayPars[4]?.type
-                                pairName5.text = dayPars[4]?.name
-                                auditoriumName5.text = dayPars[4]?.place
-                                teacherName5.text = dayPars[4]?.pr
-                            } else {
-                                if(Card5 != null) Card5.visibility = View.GONE
-                            }
-                            if (dayPars[5] != null && Card6 != null) {
-                                startTime6.text = schedule.getPairTime(6)
-                                finishTime6.text = schedule.getPairFinishTime(6)
-                                pairType6.text = dayPars[5]?.type
-                                pairName6.text = dayPars[5]?.name
-                                auditoriumName6.text = dayPars[5]?.place
-                                teacherName6.text = dayPars[5]?.pr
-                            } else {
-                                if(Card6 != null) Card6.visibility = View.GONE
-                            }
-                            if (dayPars[6] != null && Card7 != null) {
-                                startTime7.text = schedule.getPairTime(7)
-                                finishTime7.text = schedule.getPairFinishTime(7)
-                                pairType7.text = dayPars[6]?.type
-                                pairName7.text = dayPars[6]?.name
-                                auditoriumName7.text = dayPars[6]?.place
-                                teacherName7.text = dayPars[6]?.pr
-                            } else {
-                                if(Card7 != null) Card7.visibility = View.GONE
-                            }
-                        }
+
+                            if(teacherSearchQuery.isNotEmpty()) checkTeacher(getInt(ARG_OBJECT))*/
+
+                                    if (dayPars[0] != null && Card1 != null) {
+                                        startTime1.text = schedule.getPairTime(1)
+                                        finishTime1.text = schedule.getPairFinishTime(1)
+                                        pairType1.text = dayPars[0]?.type
+                                        pairName1.text = dayPars[0]?.name
+                                        auditoriumName1.text = dayPars[0]?.place
+                                        teacherName1.text = dayPars[0]?.pr
+                                    } else {
+                                        if(Card1 != null) Card1.visibility = View.GONE
+                                    }
+                                    if (dayPars[1] != null && Card2 != null) {
+                                        startTime2.text = schedule.getPairTime(2)
+                                        finishTime2.text = schedule.getPairFinishTime(2)
+                                        pairType2.text = dayPars[1]?.type
+                                        pairName2.text = dayPars[1]?.name
+                                        auditoriumName2.text = dayPars[1]?.place
+                                        teacherName2.text = dayPars[1]?.pr
+                                    } else {
+                                        if(Card2 != null) Card2.visibility = View.GONE
+                                    }
+                                    if (dayPars[2] != null && Card3 != null) {
+                                        startTime3.text = schedule.getPairTime(3)
+                                        finishTime3.text = schedule.getPairFinishTime(3)
+                                        pairType3.text = dayPars[2]?.type
+                                        pairName3.text = dayPars[2]?.name
+                                        auditoriumName3.text = dayPars[2]?.place
+                                        teacherName3.text = dayPars[2]?.pr
+                                    } else {
+                                        if(Card3 != null) Card3.visibility = View.GONE
+                                    }
+                                    if (dayPars[3] != null && Card4 != null) {
+                                        startTime4.text = schedule.getPairTime(4)
+                                        finishTime4.text = schedule.getPairFinishTime(4)
+                                        pairType4.text = dayPars[3]?.type
+                                        pairName4.text = dayPars[3]?.name
+                                        auditoriumName4.text = dayPars[3]?.place
+                                        teacherName4.text = dayPars[3]?.pr
+                                    } else {
+                                        if(Card4 != null) Card4.visibility = View.GONE
+                                    }
+                                    if (dayPars[4] != null && Card5 != null) {
+                                        startTime5.text = schedule.getPairTime(5)
+                                        finishTime5.text = schedule.getPairFinishTime(5)
+                                        pairType5.text = dayPars[4]?.type
+                                        pairName5.text = dayPars[4]?.name
+                                        auditoriumName5.text = dayPars[4]?.place
+                                        teacherName5.text = dayPars[4]?.pr
+                                    } else {
+                                        if(Card5 != null) Card5.visibility = View.GONE
+                                    }
+                                    if (dayPars[5] != null && Card6 != null) {
+                                        startTime6.text = schedule.getPairTime(6)
+                                        finishTime6.text = schedule.getPairFinishTime(6)
+                                        pairType6.text = dayPars[5]?.type
+                                        pairName6.text = dayPars[5]?.name
+                                        auditoriumName6.text = dayPars[5]?.place
+                                        teacherName6.text = dayPars[5]?.pr
+                                    } else {
+                                        if(Card6 != null) Card6.visibility = View.GONE
+                                    }
+                                    if (dayPars[6] != null && Card7 != null) {
+                                        startTime7.text = schedule.getPairTime(7)
+                                        finishTime7.text = schedule.getPairFinishTime(7)
+                                        pairType7.text = dayPars[6]?.type
+                                        pairName7.text = dayPars[6]?.name
+                                        auditoriumName7.text = dayPars[6]?.place
+                                        teacherName7.text = dayPars[6]?.pr
+                                    } else {
+                                        if(Card7 != null) Card7.visibility = View.GONE
+                                    }
+                                }
+
                         is AuditoriumFragment -> {
                             val dayPars = schedule.getAuditoriumSchedule(
                                 day,
@@ -339,7 +368,7 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
                         count: Int,
                         after: Int
                     ) {
-                        //To change body of created functions use File | Settings | File Templates.
+
                     }
 
                     override fun afterTextChanged(s: Editable?) {

@@ -35,8 +35,7 @@ class ScheduleFragment(private val activity : MainActivity) : Fragment() {
 
         tabLayout.setupWithViewPager(weekPager)
         weekPager.currentItem = activity.getCurrentDay()
-        //viewPager.offscreenPageLimit = 6
-        //viewPager.setOnPageChangeListener()
+
         if(scheduleWeekSpinner != null) {
             val adapter = ArrayAdapter(activity, android.R.layout.simple_spinner_item, activity.scheduleInstance.getWeeks())
             scheduleWeekSpinner.adapter = adapter
@@ -51,7 +50,7 @@ class ScheduleFragment(private val activity : MainActivity) : Fragment() {
 
     companion object{
         @JvmStatic
-        fun newInstance(param : MainActivity) = ScheduleFragment(param) //pass external param for mainpagerid
+        fun newInstance(param : MainActivity) = ScheduleFragment(param)
     }
     lateinit var weekPager: ViewPager
     lateinit var tabLayout: TabLayout

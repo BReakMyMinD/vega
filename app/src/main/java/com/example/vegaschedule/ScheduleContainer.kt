@@ -102,6 +102,8 @@ class ScheduleContainer(private val provider: Provider) {
             return arr
         }
     }
+
+    //fun teacherWorkingDays(name: String)
     //возвращает список групп
     fun getGroups(): MutableList<String>{
         val list = arrayListOf<String>()

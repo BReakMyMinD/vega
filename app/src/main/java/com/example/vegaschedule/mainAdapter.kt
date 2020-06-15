@@ -9,7 +9,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import kotlinx.android.synthetic.main.fragment_collection_object.view.*
 
-private const val ARG_PARAM = "param"
+
 
 class mainPagerAdapter(fm: FragmentManager, private val activity : MainActivity): FragmentPagerAdapter(fm) {
 
