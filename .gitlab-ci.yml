@@ -21,3 +21,6 @@ pages:
   script:
   - ./gradlew dokka 
   - mv app/build/doc/app/ public/
+  artifacts:
+     paths:
+      - public
