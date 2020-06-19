@@ -8,6 +8,8 @@ MERGED from [androidx.navigation:navigation-ui-ktx:2.2.2] C:\Users\Xiaomi\.gradl
 MERGED from [androidx.navigation:navigation-ui:2.2.2] C:\Users\Xiaomi\.gradle\caches\transforms-2\files-2.1\27ef2254a6e7cc1ecdf344cdd8d7bb22\navigation-ui-2.2.2\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\Xiaomi\.gradle\caches\transforms-2\files-2.1\16420fe737ef7b62cd82b9808c3fc75f\material-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.fxn769:ariana:1.0] C:\Users\Xiaomi\.gradle\caches\transforms-2\files-2.1\3c28d483088b53ab522b8826b00fb787\jetified-ariana-1.0\AndroidManifest.xml:2:1-17:12
+MERGED from [androidx.preference:preference-ktx:1.1.1] C:\Users\Xiaomi\.gradle\caches\transforms-2\files-2.1\2ed25a16fd8f4c2aa281d28b6b48c99b\jetified-preference-ktx-1.1.1\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.preference:preference:1.1.1] C:\Users\Xiaomi\.gradle\caches\transforms-2\files-2.1\ec99d3193a141d1576843620bd880ce8\preference-1.1.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\Xiaomi\.gradle\caches\transforms-2\files-2.1\18c3df9542025953da94f464ee5f82bb\appcompat-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.navigation:navigation-fragment-ktx:2.2.2] C:\Users\Xiaomi\.gradle\caches\transforms-2\files-2.1\752dfb6a6f7b0f1c553c243b643c580e\navigation-fragment-ktx-2.2.2\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.fragment:fragment-ktx:1.2.4] C:\Users\Xiaomi\.gradle\caches\transforms-2\files-2.1\f18ad3ea7fb48b1041ce33f41a1c035b\jetified-fragment-ktx-1.2.4\AndroidManifest.xml:17:1-24:12
@@ -141,6 +143,10 @@ MERGED from [com.google.android.material:material:1.1.0] C:\Users\Xiaomi\.gradle
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\Xiaomi\.gradle\caches\transforms-2\files-2.1\16420fe737ef7b62cd82b9808c3fc75f\material-1.1.0\AndroidManifest.xml:20:5-44
 MERGED from [com.fxn769:ariana:1.0] C:\Users\Xiaomi\.gradle\caches\transforms-2\files-2.1\3c28d483088b53ab522b8826b00fb787\jetified-ariana-1.0\AndroidManifest.xml:7:5-9:41
 MERGED from [com.fxn769:ariana:1.0] C:\Users\Xiaomi\.gradle\caches\transforms-2\files-2.1\3c28d483088b53ab522b8826b00fb787\jetified-ariana-1.0\AndroidManifest.xml:7:5-9:41
+MERGED from [androidx.preference:preference-ktx:1.1.1] C:\Users\Xiaomi\.gradle\caches\transforms-2\files-2.1\2ed25a16fd8f4c2aa281d28b6b48c99b\jetified-preference-ktx-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.preference:preference-ktx:1.1.1] C:\Users\Xiaomi\.gradle\caches\transforms-2\files-2.1\2ed25a16fd8f4c2aa281d28b6b48c99b\jetified-preference-ktx-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.preference:preference:1.1.1] C:\Users\Xiaomi\.gradle\caches\transforms-2\files-2.1\ec99d3193a141d1576843620bd880ce8\preference-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.preference:preference:1.1.1] C:\Users\Xiaomi\.gradle\caches\transforms-2\files-2.1\ec99d3193a141d1576843620bd880ce8\preference-1.1.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\Xiaomi\.gradle\caches\transforms-2\files-2.1\18c3df9542025953da94f464ee5f82bb\appcompat-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\Xiaomi\.gradle\caches\transforms-2\files-2.1\18c3df9542025953da94f464ee5f82bb\appcompat-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.navigation:navigation-fragment-ktx:2.2.2] C:\Users\Xiaomi\.gradle\caches\transforms-2\files-2.1\752dfb6a6f7b0f1c553c243b643c580e\navigation-fragment-ktx-2.2.2\AndroidManifest.xml:20:5-22:41

@@ -87,6 +87,7 @@
                         android:textSize="15sp"
                         app:layout_constraintBottom_toTopOf="@+id/pairName1"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toEndOf="@+id/divider1"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.0" />
@@ -211,6 +212,7 @@
                         android:textSize="15sp"
                         app:layout_constraintBottom_toTopOf="@+id/pairName2"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toEndOf="@+id/divider2"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.0" />
@@ -333,9 +335,10 @@
                         android:textSize="15sp"
                         app:layout_constraintBottom_toTopOf="@+id/pairName3"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toEndOf="@+id/divider3"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.0" />
+                        app:layout_constraintVertical_bias="0.100000024" />
 
                     <TextView
                         android:id="@+id/pairName3"
@@ -455,6 +458,7 @@
                         android:textSize="15sp"
                         app:layout_constraintBottom_toTopOf="@+id/pairName4"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toEndOf="@+id/divider4"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.0" />
@@ -577,6 +581,7 @@
                         android:textSize="15sp"
                         app:layout_constraintBottom_toTopOf="@+id/pairName5"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toEndOf="@+id/divider5"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.0" />
@@ -699,6 +704,7 @@
                         android:textSize="15sp"
                         app:layout_constraintBottom_toTopOf="@+id/pairName6"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toEndOf="@+id/divider6"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.0" />
@@ -821,6 +827,7 @@
                         android:textSize="15sp"
                         app:layout_constraintBottom_toTopOf="@+id/pairName7"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toEndOf="@+id/divider7"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.0" />

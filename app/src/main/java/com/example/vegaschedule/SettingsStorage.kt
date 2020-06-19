@@ -15,6 +15,11 @@ class SettingsStorage(private val context: Context, private val defaultGroup: St
         editor.putInt("Subgroup", subgroup)
         editor.apply()
     }
+    fun firstLaunch() {
+        val editor = pref.edit()
+        editor.putBoolean("FirstLaunch", false)
+        editor.apply()
+    }
 
     //чтение сохраненных настроек
     fun getGroup(): String {
@@ -24,7 +29,9 @@ class SettingsStorage(private val context: Context, private val defaultGroup: St
     fun getSubgroup(): Int {
         return pref.getInt("Subgroup", 1)
     }
-
+    fun isFirstLaunch(): Boolean{
+        return pref.getBoolean("FirstLaunch", true)
+    }
     private val pref: SharedPreferences = context.getSharedPreferences("SETTINGS_PREFERENCE",
         Context.MODE_PRIVATE)
 }

@@ -35,8 +35,8 @@ class ScheduleFragment(private val activity : MainActivity) : Fragment() {
 
         tabLayout.setupWithViewPager(weekPager)
         weekPager.currentItem = activity.getCurrentDay()
-        //viewPager.offscreenPageLimit = 6
-        //viewPager.setOnPageChangeListener()
+        weekPager.offscreenPageLimit = 6
+
         if(scheduleWeekSpinner != null) {
             val adapter = ArrayAdapter(activity, android.R.layout.simple_spinner_item, activity.scheduleInstance.getWeeks())
             scheduleWeekSpinner.adapter = adapter

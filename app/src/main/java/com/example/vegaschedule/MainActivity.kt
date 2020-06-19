@@ -36,19 +36,14 @@ class MainActivity : AppCompatActivity() {
             when(id) {
                 R.id.schedule -> {
                     mainPager.currentItem = 0
-
-
                     title = "Расписание"
                 }
                 R.id.teacher -> {
                     mainPager.currentItem = 1
-
-
                     title = "Поиск преподавателя"
                 }
                 R.id.auditorium -> {
                     mainPager.currentItem = 2
-
                     title = "Поиск свободной аудитории"
                 }
                 R.id.settings -> {
@@ -61,8 +56,6 @@ class MainActivity : AppCompatActivity() {
             mainPager.animate()
         }
 
-        bottom_menu.setItemSelected(R.id.schedule)
-        bottom_menu.performClick()
 
         mainPager.adapter = mainPagerAdapter(supportFragmentManager, this).apply{
             list = ArrayList<String>().apply {
@@ -72,6 +65,17 @@ class MainActivity : AppCompatActivity() {
                 add("Настройки")
             }
         }
+
+        if(settingsStorage.isFirstLaunch()) {
+            bottom_menu.setItemSelected(R.id.settings)
+            mainPager.currentItem = 3
+            title = "Настройки"
+            settingsStorage.firstLaunch()
+        }
+        else{
+            bottom_menu.setItemSelected(R.id.schedule)
+        }
+        bottom_menu.performClick()
 
     }
 

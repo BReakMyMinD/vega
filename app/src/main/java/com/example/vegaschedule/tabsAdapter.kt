@@ -1,5 +1,6 @@
 package com.example.vegaschedule
 
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.text.Editable
@@ -7,13 +8,16 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_auditorium.*
 import kotlinx.android.synthetic.main.fragment_collection_object.*
+import kotlinx.android.synthetic.main.fragment_schedule.*
 import kotlinx.android.synthetic.main.fragment_teacher.*
 
 
@@ -79,7 +83,6 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
             }
 
             fun setUI() {
-                    println("setui called")
                     if(Card1 != null) Card1.visibility = View.VISIBLE
                     if(Card2 != null) Card2.visibility = View.VISIBLE
                     if(Card3 != null) Card3.visibility = View.VISIBLE
@@ -87,7 +90,7 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
                     if(Card5 != null) Card5.visibility = View.VISIBLE
                     if(Card6 != null) Card6.visibility = View.VISIBLE
                     if(Card7 != null) Card7.visibility = View.VISIBLE
-                    when (parent) {//баг вот тут был
+                    when (parent) {
                         is ScheduleFragment -> {
 
                             val dayPars = schedule.getDaySchedule(
@@ -103,6 +106,9 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
                                 pairName1.text = dayPars[0]?.name
                                 auditoriumName1.text = dayPars[0]?.place
                                 teacherName1.text = dayPars[0]?.pr
+                                if(dayPars[0]?.isVega == true) {
+                                    Card1.setBackgroundColor(Color.rgb(170, 239, 250))
+                                }
                             } else {
                                 if(Card1 != null) Card1.visibility = View.GONE
                             }
@@ -113,6 +119,9 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
                                 pairName2.text = dayPars[1]?.name
                                 auditoriumName2.text = dayPars[1]?.place
                                 teacherName2.text = dayPars[1]?.pr
+                                if(dayPars[1]?.isVega == true) {
+                                    Card2.setBackgroundColor(Color.rgb(170, 239, 250))
+                                }
                             } else {
                                 if(Card2 != null) Card2.visibility = View.GONE
                             }
@@ -123,6 +132,9 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
                                 pairName3.text = dayPars[2]?.name
                                 auditoriumName3.text = dayPars[2]?.place
                                 teacherName3.text = dayPars[2]?.pr
+                                if(dayPars[2]?.isVega == true) {
+                                    Card3.setBackgroundColor(Color.rgb(170, 239, 250))
+                                }
                             } else {
                                 if(Card3 != null) Card3.visibility = View.GONE
                             }
@@ -133,6 +145,9 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
                                 pairName4.text = dayPars[3]?.name
                                 auditoriumName4.text = dayPars[3]?.place
                                 teacherName4.text = dayPars[3]?.pr
+                                if(dayPars[3]?.isVega == true) {
+                                    Card4.setBackgroundColor(Color.rgb(170, 239, 250))
+                                }
                             } else {
                                 if(Card4 != null) Card4.visibility = View.GONE
                             }
@@ -143,6 +158,9 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
                                 pairName5.text = dayPars[4]?.name
                                 auditoriumName5.text = dayPars[4]?.place
                                 teacherName5.text = dayPars[4]?.pr
+                                if(dayPars[4]?.isVega == true) {
+                                    Card5.setBackgroundColor(Color.rgb(170, 239, 250))
+                                }
                             } else {
                                 if(Card5 != null) Card5.visibility = View.GONE
                             }
@@ -153,6 +171,9 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
                                 pairName6.text = dayPars[5]?.name
                                 auditoriumName6.text = dayPars[5]?.place
                                 teacherName6.text = dayPars[5]?.pr
+                                if(dayPars[5]?.isVega == true) {
+                                    Card6.setBackgroundColor(Color.rgb(170, 239, 250))
+                                }
                             } else {
                                 if(Card6 != null) Card6.visibility = View.GONE
                             }
@@ -163,6 +184,9 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
                                 pairName7.text = dayPars[6]?.name
                                 auditoriumName7.text = dayPars[6]?.place
                                 teacherName7.text = dayPars[6]?.pr
+                                if(dayPars[6]?.isVega == true) {
+                                    Card7.setBackgroundColor(Color.rgb(170, 239, 250))
+                                }
                             } else {
                                 if(Card7 != null) Card7.visibility = View.GONE
                             }
@@ -181,6 +205,9 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
                                 pairName1.text = dayPars[0]?.name
                                 auditoriumName1.text = dayPars[0]?.place
                                 teacherName1.text = dayPars[0]?.pr
+                                if(dayPars[0]?.isVega == true) {
+                                    Card1.setBackgroundColor(Color.rgb(170, 239, 250))
+                                }
                             } else {
                                 if(Card1 != null) Card1.visibility = View.GONE
                             }
@@ -191,6 +218,9 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
                                 pairName2.text = dayPars[1]?.name
                                 auditoriumName2.text = dayPars[1]?.place
                                 teacherName2.text = dayPars[1]?.pr
+                                if(dayPars[1]?.isVega == true) {
+                                    Card2.setBackgroundColor(Color.rgb(170, 239, 250))
+                                }
                             } else {
                                 if(Card2 != null) Card2.visibility = View.GONE
                             }
@@ -201,6 +231,9 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
                                 pairName3.text = dayPars[2]?.name
                                 auditoriumName3.text = dayPars[2]?.place
                                 teacherName3.text = dayPars[2]?.pr
+                                if(dayPars[2]?.isVega == true) {
+                                    Card3.setBackgroundColor(Color.rgb(170, 239, 250))
+                                }
                             } else {
                                 if(Card3 != null) Card3.visibility = View.GONE
                             }
@@ -211,6 +244,9 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
                                 pairName4.text = dayPars[3]?.name
                                 auditoriumName4.text = dayPars[3]?.place
                                 teacherName4.text = dayPars[3]?.pr
+                                if(dayPars[3]?.isVega == true) {
+                                    Card4.setBackgroundColor(Color.rgb(170, 239, 250))
+                                }
                             } else {
                                 if(Card4 != null) Card4.visibility = View.GONE
                             }
@@ -221,6 +257,9 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
                                 pairName5.text = dayPars[4]?.name
                                 auditoriumName5.text = dayPars[4]?.place
                                 teacherName5.text = dayPars[4]?.pr
+                                if(dayPars[4]?.isVega == true) {
+                                    Card5.setBackgroundColor(Color.rgb(170, 239, 250))
+                                }
                             } else {
                                 if(Card5 != null) Card5.visibility = View.GONE
                             }
@@ -231,6 +270,9 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
                                 pairName6.text = dayPars[5]?.name
                                 auditoriumName6.text = dayPars[5]?.place
                                 teacherName6.text = dayPars[5]?.pr
+                                if(dayPars[5]?.isVega == true) {
+                                    Card6.setBackgroundColor(Color.rgb(170, 239, 250))
+                                }
                             } else {
                                 if(Card6 != null) Card6.visibility = View.GONE
                             }
@@ -241,6 +283,9 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
                                 pairName7.text = dayPars[6]?.name
                                 auditoriumName7.text = dayPars[6]?.place
                                 teacherName7.text = dayPars[6]?.pr
+                                if(dayPars[6]?.isVega == true) {
+                                    Card7.setBackgroundColor(Color.rgb(170, 239, 250))
+                                }
                             } else {
                                 if(Card7 != null) Card7.visibility = View.GONE
                             }
@@ -328,6 +373,20 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
 
 
             if(parent is TeacherFragment) {
+                parent.teacherWeekSpinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
+                    override fun onItemSelected(
+                        parent: AdapterView<*>?,
+                        view: View?,
+                        position: Int,
+                        id: Long
+                    ) {
+                        setUI()
+                    }
+
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+
+                    }
+                }
                 parent.editText.addTextChangedListener(object: TextWatcher {
                     override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
 
@@ -339,7 +398,7 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
                         count: Int,
                         after: Int
                     ) {
-                        //To change body of created functions use File | Settings | File Templates.
+
                     }
 
                     override fun afterTextChanged(s: Editable?) {
@@ -349,6 +408,39 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
                     }
                 })
             }
+            if(parent is ScheduleFragment) {
+                parent.scheduleWeekSpinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
+                    override fun onItemSelected(
+                        parent: AdapterView<*>?,
+                        view: View?,
+                        position: Int,
+                        id: Long
+                    ) {
+                        setUI()
+                    }
+
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+
+                    }
+                }
+            }
+            if(parent is AuditoriumFragment) {
+                parent.auditoriumWeekSpinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
+                    override fun onItemSelected(
+                        parent: AdapterView<*>?,
+                        view: View?,
+                        position: Int,
+                        id: Long
+                    ) {
+                        setUI()
+                    }
+
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+
+                    }
+                }
+            }
+
 
             }
 

@@ -36,7 +36,8 @@ class AuditoriumFragment(private val activity : MainActivity) : Fragment() {
         weekPager.adapter = DemoCollectionPagerAdapter(childFragmentManager, activity, this)
         weekPager.currentItem = activity.getCurrentDay()
         tabLayout.setupWithViewPager(weekPager)
-        //viewPager.offscreenPageLimit = 6
+        weekPager.offscreenPageLimit = 6
+
 
         if(auditoriumWeekSpinner != null) {
             val adapter = ArrayAdapter(activity, android.R.layout.simple_spinner_item, activity.scheduleInstance.getWeeks())

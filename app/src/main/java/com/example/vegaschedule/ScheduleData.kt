@@ -1,8 +1,10 @@
 package com.example.vegaschedule
 
+
 data class ScheduleData(
-    val `const`: Const,
+    val const: Const,
     val groups: List<Group>,
+    val patterns: List<Pattern>,
     val settings: Settings
 )
 
@@ -17,15 +19,26 @@ data class Group(
     val group: String
 )
 
+data class Pattern(
+    val color: String? = null,
+    val comment: String? = null,
+    val pattern: String,
+    val place: String? = null,
+    val pr: String? = null,
+    val prLink: String? = null,
+    val search: Any?
+)
+
 data class Settings(
     val firstWeekDate: String,
-    val subgroupCount: Int,
-    val maxPar: Int
+    val maxPar: Int,
+    val subgroupCount: Int
 )
 
 data class Colors(
     val default: String,
-    val math: String,
+    val lang: String,
+    val ttt: String,
     val кафедра: String
 )
 
@@ -54,12 +67,15 @@ data class Day(
 )
 
 data class Par(
+    val even: Int? = null,
+    val length: String? = null,
     val name: String,
     val number: Int,
+    val pr: String? = null,
+    val place: String? = null,
+    val subgroup: Int? = null,
     val type: String? = null,
-    val place: String? = null,//аудитория(если есть)
-    val pr: String? = null,//преподаватель(если есть)
-    val subgroup: Int? = null,//подгруппа(если есть)
-    val weekSettings: String,//all, even, odd, except, only
+    var isVega: Boolean = false,
+    val weekSettings: String? = null,//except/only
     val weeks: List<Int>? = null
 )

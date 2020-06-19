@@ -31,10 +31,12 @@ class SettingsFragment(private val activity: MainActivity) : Fragment() {
         if(spinner3 != null) {
             val adapter = ArrayAdapter(activity, android.R.layout.simple_spinner_item, activity.scheduleInstance.getGroups())
             spinner3.adapter = adapter
+            spinner3.setSelection(adapter.getPosition(activity.settingsStorage.getGroup()))
         }
         if(spinner4 != null) {
             val adapter = ArrayAdapter(activity, android.R.layout.simple_spinner_item, activity.scheduleInstance.getSubgroups())
             spinner4.adapter = adapter
+            spinner4.setSelection(adapter.getPosition(activity.settingsStorage.getSubgroup()))
         }
 
         spinner3.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
