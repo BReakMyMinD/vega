@@ -84,13 +84,17 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
                     if(Card7 != null) Card7.visibility = View.VISIBLE
                     when (parent) {
                         is ScheduleFragment -> {
-
+                            var lastPair = 0
                             val dayPars = schedule.getDaySchedule(
                                 settings.getGroup(),
                                 day,
                                 activity.getChosenScheduleWeek(),
                                 settings.getSubgroup()
                             )
+                            for (i in 0..6){
+                                if (dayPars[i] != null) lastPair = i
+                            }
+                            if (lastPair >= 0) {
                             if (dayPars[0] != null && Card1 != null) {
                                 startTime1.text = schedule.getPairTime(1)
                                 finishTime1.text = schedule.getPairFinishTime(1)
@@ -99,7 +103,17 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
                                 auditoriumName1.text = dayPars[0]?.place
                                 teacherName1.text = dayPars[0]?.pr
                             } else {
-                            }
+                                startTime1.text = schedule.getPairTime(1)
+                                finishTime1.text = schedule.getPairFinishTime(1)
+                                pairType1.visibility = View.GONE
+                                pairName1.text = "Окно"
+                                auditoriumName1.visibility = View.GONE
+                                teacherName1.visibility = View.GONE
+                                Card1.setBackgroundColor(666)
+
+                            }} else Card1.visibility = View.GONE
+
+                            if (lastPair >= 1) {
                             if (dayPars[1] != null && Card2 != null) {
                                 startTime2.text = schedule.getPairTime(2)
                                 finishTime2.text = schedule.getPairFinishTime(2)
@@ -108,7 +122,15 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
                                 auditoriumName2.text = dayPars[1]?.place
                                 teacherName2.text = dayPars[1]?.pr
                             } else {
-                            }
+                                startTime2.text = schedule.getPairTime(2)
+                                finishTime2.text = schedule.getPairFinishTime(2)
+                                pairType2.visibility = View.GONE
+                                pairName2.text = "Окно"
+                                auditoriumName2.visibility = View.GONE
+                                teacherName2.visibility = View.GONE
+                                Card2.setBackgroundColor(666)
+                            }} else Card2.visibility = View.GONE
+                            if (lastPair >= 2) {
                             if (dayPars[2] != null && Card3 != null) {
                                 startTime3.text = schedule.getPairTime(3)
                                 finishTime3.text = schedule.getPairFinishTime(3)
@@ -117,7 +139,15 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
                                 auditoriumName3.text = dayPars[2]?.place
                                 teacherName3.text = dayPars[2]?.pr
                             } else {
-                            }
+                                startTime3.text = schedule.getPairTime(3)
+                                finishTime3.text = schedule.getPairFinishTime(3)
+                                pairType3.visibility = View.GONE
+                                pairName3.text = "Окно"
+                                auditoriumName3.visibility = View.GONE
+                                teacherName3.visibility = View.GONE
+                                Card3.setBackgroundColor(666)
+                            }} else Card3.visibility = View.GONE
+                            if (lastPair >= 3) {
                             if (dayPars[3] != null && Card4 != null) {
                                 startTime4.text = schedule.getPairTime(4)
                                 finishTime4.text = schedule.getPairFinishTime(4)
@@ -126,7 +156,15 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
                                 auditoriumName4.text = dayPars[3]?.place
                                 teacherName4.text = dayPars[3]?.pr
                             } else {
-                            }
+                                startTime4.text = schedule.getPairTime(4)
+                                finishTime4.text = schedule.getPairFinishTime(4)
+                                pairType4.visibility = View.GONE
+                                pairName4.text = "Окно"
+                                auditoriumName4.visibility = View.GONE
+                                teacherName4.visibility = View.GONE
+                                Card4.setBackgroundColor(666)
+                            }} else Card4.visibility = View.GONE
+                            if (lastPair >= 4) {
                             if (dayPars[4] != null && Card5 != null) {
                                 startTime5.text = schedule.getPairTime(5)
                                 finishTime5.text = schedule.getPairFinishTime(5)
@@ -135,7 +173,15 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
                                 auditoriumName5.text = dayPars[4]?.place
                                 teacherName5.text = dayPars[4]?.pr
                             } else {
-                            }
+                                startTime5.text = schedule.getPairTime(5)
+                                finishTime5.text = schedule.getPairFinishTime(5)
+                                pairType5.visibility = View.GONE
+                                pairName5.text = "Окно"
+                                auditoriumName5.visibility = View.GONE
+                                teacherName5.visibility = View.GONE
+                                Card5.setBackgroundColor(666)
+                            }} else Card5.visibility = View.GONE
+                            if (lastPair >= 5){
                             if (dayPars[5] != null && Card6 != null) {
                                 startTime6.text = schedule.getPairTime(6)
                                 finishTime6.text = schedule.getPairFinishTime(6)
@@ -144,7 +190,15 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
                                 auditoriumName6.text = dayPars[5]?.place
                                 teacherName6.text = dayPars[5]?.pr
                             } else {
-                            }
+                                startTime6.text = schedule.getPairTime(6)
+                                finishTime6.text = schedule.getPairFinishTime(6)
+                                pairType6.visibility = View.GONE
+                                pairName6.text = "Окно"
+                                auditoriumName6.visibility = View.GONE
+                                teacherName6.visibility = View.GONE
+                                Card6.setBackgroundColor(666)
+                            }} else Card6.visibility = View.GONE
+                            if (lastPair >= 6) {
                             if (dayPars[6] != null && Card7 != null) {
                                 startTime7.text = schedule.getPairTime(7)
                                 finishTime7.text = schedule.getPairFinishTime(7)
@@ -153,7 +207,15 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
                                 auditoriumName7.text = dayPars[6]?.place
                                 teacherName7.text = dayPars[6]?.pr
                             } else {
-                            }
+                                startTime7.text = schedule.getPairTime(7)
+                                finishTime7.text = schedule.getPairFinishTime(7)
+                                pairType7.visibility = View.GONE
+                                pairName7.text = "Окно"
+                                auditoriumName7.visibility = View.GONE
+                                teacherName7.visibility = View.GONE
+                                Card7.setBackgroundColor(666)
+
+                            }} else Card7.visibility = View.GONE
                         }
                         is TeacherFragment -> {
                             val dayPars = schedule.getTeacherSchedule(teacherSearchQuery, day, activity.getChosenTeacherWeek())
