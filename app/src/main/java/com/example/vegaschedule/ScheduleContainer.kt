@@ -84,37 +84,53 @@ class ScheduleContainer(private val provider: Provider) {
                 val parList = dayObj?.pars?.filter{ it.place?.contains("Б-209") ?: false
                         && checkPar(it, day, week) }
 
-                if (!parList.isNullOrEmpty()) {
-                    var firstParNum: Int = maxPar
-                    var lastParNum: Int = 0
+                if (parList.isNullOrEmpty()) {
+                    continue@loop
+                }
+                else {
                     for(par in parList) {
-                        if(firstParNum >= par.number) {
-                            firstParNum = par.number
+                        if(arr[par.number - 1] != null) {
+                            arr[par.number - 1] = Par(par.even, par.length, par.name, par.number, par.pr,
+                                "Б-209", par.subgroup, par.type, par.isVega, par.weekSettings, par.weeks)
                         }
-                        if(lastParNum <= par.number) {
-                            lastParNum = par.number
-                        }
-                    }
-                    for(par in parList) {
-
-                        if(par.place == "Б-209л"){
-                            val emptyParObj: Par = Par(null, null,"Аудитория свободна", par.number, null, "Б-209", null, "Правая", true, null, null)
-                            arr[par.number - 1] = emptyParObj
-                        }
-                        else if(par.place == "Б-209п") {
-                            val emptyParObj: Par = Par(null, null,"Аудитория свободна", par.number, null, "Б-209", null, "Левая", true, null, null)
-                            arr[par.number - 1] = emptyParObj
-                        }
-                    }
-                    for(parNum in 1..maxPar) {
-
-                        if(arr[parNum] == null && lastParNum > parNum && firstParNum < parNum) {
-                            val emptyParObj: Par = Par(null, null,"Аудитория свободна", parNum, null, "Б-209", null, "Целиком", true, null, null)
-                            arr[parNum - 1] = emptyParObj
+                        else {
+                            arr[par.number - 1] = par
                         }
                     }
                 }
+            }
+            var firstParNum: Int = maxPar
+            var lastParNum: Int = 0
+            for(par in arr) {
+                if(par != null) {
+                    if(firstParNum >= par.number) {
+                        firstParNum = par.number
+                    }
+                    if(lastParNum <= par.number) {
+                        lastParNum = par.number
+                    }
+                }
+            }
 
+            for(parNum in 1..maxPar) {
+                var par = arr[parNum - 1]
+                if(par != null) {
+                    if(par.place == "Б-209л"){
+                        val emptyParObj: Par = Par(null, null,"Аудитория свободна", par.number, null, "Б-209", null, "Правая", true, null, null)
+                        arr[par.number - 1] = emptyParObj
+                    }
+                    else if(par.place == "Б-209п") {
+                        val emptyParObj: Par = Par(null, null,"Аудитория свободна", par.number, null, "Б-209", null, "Левая", true, null, null)
+                        arr[par.number - 1] = emptyParObj
+                    }
+                    else {
+                        arr[par.number - 1] = null
+                    }
+                }
+                else if (lastParNum > parNum && firstParNum < parNum){
+                    val emptyParObj: Par = Par(null, null,"Аудитория свободна", parNum, null, "Б-209", null, "Целиком", true, null, null)
+                    arr[parNum - 1] = emptyParObj
+                }
             }
         } finally {
             return arr
