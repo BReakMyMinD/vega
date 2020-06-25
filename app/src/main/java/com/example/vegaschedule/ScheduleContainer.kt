@@ -10,7 +10,7 @@ class ScheduleContainer(private val provider: Provider) {
     fun getDaySchedule(currentGroup: String, currentDay: String, currentWeek: Int, subgroup: Int): Array<Par?> {
         val maxPar = data?.settings?.maxPar ?: 7
         val arr: Array<Par?> = arrayOfNulls(maxPar)
-        val cafedra = data?.patterns?.find{ it.color == "кафедра"}?.search as List<String>?
+        val cafedra = data?.patterns?.find{ it.color == "kafedra"}?.search as List<String>?
         if (cafedra != null) {
             cafedra.forEach{ it.replace("*", "")}
         }
