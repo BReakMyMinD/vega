@@ -5,11 +5,61 @@
     "maxPar": 7,
     "subgroupCount": 2
   },
+  "patterns": [
+    {
+      "pattern": "name",
+      "search": "Дискр.*. мат.*",
+      "pr": "И.В. Артамкин",
+      "prLink": "https://yandex.ru"
+    },
+    {
+      "comment": "===== Помечаем все предметы кафедры необходимым цветом =====",
+      "pattern": "name",
+      "search": [
+        "Введ. в проф. деят.",
+        "Прогр. в ЗРЛ",
+        "Языки и МП",
+        "САПР", "ОС", "БД", "КСЕ", "РЛС", "УРПО", "САПО",
+        "Числ. методы",
+        "Комп. граф.",
+        "Проект. транс.",
+        "Теория игр",
+        "Эргономика ПО",
+        "Введение в РПО",
+        "Спец. мат. мод.",
+        "Совр. комп. техн.",
+        "План. эксп."],
+      "color": "kafedra"
+    },
+    {
+      "pattern": "name",
+      "search": "Мат. анализ",
+      "pr": "М.Н. Прохоров",
+      "prLink": "https://google.com"
+    },
+    {
+      "pattern": "name",
+      "search": "Введ. в проф. деят.",
+      "pr": "Т.В. Сидоренко",
+      "prLink": "https://vk.com"
+    },
+    {
+      "pattern": "name",
+      "search": ["Спецрасп.*", "НИР"],
+      "color": "lang"
+    },
+    {
+      "pattern": "place",
+      "search": "Б-209.?",
+      "place": "<span style='border-bottom:2px solid #000;border-right:2px solid #000;padding:2px'>{0}</span>"
+    }
+  ],
   "const": {
     "colors": {
-      "кафедра": "rgb(165, 235, 60)",
-      "math": "rgb(255, 225, 90)",
-      "default": "rgb(135, 225, 235)"
+      "kafedra": "rgb(204, 255, 102)",
+      "lang": "rgb(218, 238, 243)",
+      "ttt": "rgb(255, 238, 243)",
+      "default": "rgb(245, 245, 143)"
     },
     "fullDay": {
       "ПН": "Понедельник",
@@ -40,28 +90,26 @@
               "name": "Мат. анализ",
               "type": "лекция",
               "number": 4,
-              "place": "А-16",
-              "weekSettings": "all"
+              "place": "А-16"
             },
             {
               "name": "Введ. в проф. деят.",
               "number": 5,
               "place": "А-1",
-              "weekSettings": "even"
+              "even": 1
             },
             {
               "name": "Прогр. в ЗРЛ",
               "number": 5,
               "place": "Б-209",
-              "weekSettings": "odd",
+              "even": 2,
               "subgroup": 2
             },
             {
               "name": "Дискр. мат.",
               "type": "лекция",
               "number": 6,
-              "place": "А-16",
-              "weekSettings": "all"
+              "place": "А-16"
             }
           ]
         },
@@ -72,7 +120,7 @@
               "name": "Прогр. в ЗРЛ",
               "number": 1,
               "place": "Б-209п",
-              "weekSettings": "even",
+              "even": 1,
               "subgroup": 1
             },
             {
@@ -80,27 +128,26 @@
               "type": "лекция",
               "number": 2,
               "place": "А-4",
-              "weekSettings": "odd"
+              "even": 2
             },
             {
               "name": "Алг. и геом.",
               "type": "лекция",
               "number": 3,
               "place": "А-15",
-              "weekSettings": "all"
+              "pr": "Адамович О.М."
             },
             {
               "name": "Алг. и геом.",
               "type": "практика",
               "number": 4,
               "place": "А-211",
-              "weekSettings": "all"
+              "pr": "Адамович О.М."
             },
             {
               "name": "Физ-ра",
               "number": 5,
-              "place": "",
-              "weekSettings": "all"
+              "place": ""
             }
           ]
         },
@@ -111,37 +158,32 @@
               "name": "Введение в РПО",
               "number": 2,
               "place": "А-1",
-              "weekSettings": "even"
+              "even": 1
             },
             {
               "name": "Мет. мат. ан.",
               "type": "практика",
               "number": 3,
-              "place": "Г-102",
-              "weekSettings": "all",
-              "pr": "Громова А.П."
+              "place": "Г-102"
             },
             {
               "name": "Дискр. мат.",
               "type": "практика",
               "number": 4,
               "place": "А-9а",
-              "weekSettings": "all",
               "pr": "Митин А.В."
             },
             {
               "name": "Введение в РПО",
               "number": 5,
               "place": "Б-209",
-              "subgroup": 1,
-              "weekSettings": "all"
+              "subgroup": 1
             },
             {
               "name": "Введение в РПО",
               "number": 6,
               "place": "Б-209",
-              "subgroup": 2,
-              "weekSettings": "all"
+              "subgroup": 2
             }
           ]
         },
@@ -151,21 +193,18 @@
             {
               "name": "Ин. язык",
               "number": 3,
-              "place": "И-311",
-              "weekSettings": "all"
+              "place": "И-311"
             },
             {
               "name": "Мет. мат. ан.",
               "type": "лекция",
               "number": 4,
-              "place": "А-12",
-              "weekSettings": "all"
+              "place": "А-12"
             },
             {
               "name": "Физ-ра",
               "number": 5,
-              "place": "",
-              "weekSettings": "all"
+              "place": ""
             }
           ]
         },
@@ -177,27 +216,29 @@
               "type": "лекция",
               "number": 1,
               "place": "А-18",
-              "weekSettings": "even"
+              "even": 1
             },
             {
               "name": "История",
               "number": 1,
               "place": "А-327",
-              "weekSettings": "odd"
+              "type": "практика",
+              "weekSettings": "except",
+              "weeks": [6]
             },
             {
               "name": "Мат. анализ",
               "type": "практика",
               "number": 2,
               "place": "А-307",
-              "weekSettings": "all"
+              "pr": "Громова А.П."
             },
             {
               "name": "Мат. анализ",
               "type": "практика",
               "number": 3,
               "place": "А-307",
-              "weekSettings": "all"
+              "pr": "Громова А.П."
             },
             {
               "name": "История",
@@ -241,41 +282,37 @@
             {
               "name": "Ин. язык (фр.)",
               "number": 2,
-              "place": "А-126",
-              "weekSettings": "all"
+              "place": "А-126"
             },
             {
               "name": "Дискр. матем.",
               "number": 3,
-              "place": "А-216",
-              "weekSettings": "all"
+              "place": "А-216"
             },
             {
               "name": "Мат. анализ",
               "type": "лекция",
               "number": 4,
-              "place": "А-16",
-              "weekSettings": "all"
+              "place": "А-16"
             },
             {
               "name": "Введ. в проф. деят.",
               "number": 5,
               "place": "А-1",
-              "weekSettings": "even"
+              "even": 1
             },
             {
               "name": "Прогр. в ЗРЛ",
               "number": 5,
               "place": "Б-209",
-              "weekSettings": "odd",
+              "even": 2,
               "subgroup": 2
             },
             {
               "name": "Дискр. мат.",
               "type": "лекция",
               "number": 6,
-              "place": "А-16",
-              "weekSettings": "all"
+              "place": "А-16"
             }
           ]
         },
@@ -286,7 +323,7 @@
               "name": "Прогр. в ЗРЛ",
               "number": 2,
               "place": "Б-209",
-              "weekSettings": "even",
+              "even": 1,
               "subgroup": 1
             },
             {
@@ -294,29 +331,24 @@
               "type": "лекция",
               "number": 2,
               "place": "А-4",
-              "weekSettings": "odd"
+              "even": 2
             },
             {
               "name": "Алг. и геом.",
               "type": "лекция",
               "number": 3,
-              "place": "А-15",
-              "weekSettings": "all",
-              "pr": "Адамович О.М."
+              "place": "А-15"
             },
             {
               "name": "Ин. язык",
               "number": 4,
-              "place": "",
-              "weekSettings": "all"
+              "place": ""
             },
             {
               "name": "Алг. и геом.",
               "type": "практика",
               "number": 5,
-              "place": "А-211",
-              "weekSettings": "all",
-              "pr": "Адамович О.М."
+              "place": "А-211"
             }
           ]
         },
@@ -327,13 +359,14 @@
               "name": "Введение в РПО",
               "number": 2,
               "place": "А-1",
-              "weekSettings": "even"
+              "even": 1
             },
             {
               "name": "Дискр. матем.",
               "type": "практика",
               "number": 2,
               "place": "А-318",
+              "even": 2,
               "weekSettings": "only",
               "weeks": [10]
             },
@@ -341,29 +374,25 @@
               "name": "Введение в РПО",
               "number": 3,
               "place": "Б-209п",
-              "subgroup": 1,
-              "weekSettings": "all"
+              "subgroup": 1
             },
             {
               "name": "Мат. анализ",
               "type": "практика",
               "number": 4,
-              "place": "Г-102",
-              "weekSettings": "all"
+              "place": "Г-102"
             },
             {
               "name": "Мат. анализ",
               "type": "практика",
               "number": 5,
-              "place": "Г-102",
-              "weekSettings": "all"
+              "place": "Г-102"
             },
             {
               "name": "Введение в РПО",
               "number": 6,
               "place": "Б-209",
-              "subgroup": 2,
-              "weekSettings": "all"
+              "subgroup": 2
             }
           ]
         },
@@ -374,14 +403,12 @@
               "name": "Мет. мат. ан.",
               "type": "лекция",
               "number": 4,
-              "place": "А-12",
-              "weekSettings": "all"
+              "place": "А-12"
             },
             {
               "name": "Физ-ра",
               "number": 5,
-              "place": "",
-              "weekSettings": "all"
+              "place": ""
             },
             {
               "name": "История",
@@ -401,26 +428,27 @@
               "type": "лекция",
               "number": 1,
               "place": "А-18",
-              "weekSettings": "even"
+              "even": 1
             },
             {
               "name": "Физ-ра",
               "number": 2,
-              "place": "",
-              "weekSettings": "all"
+              "place": ""
             },
             {
-              "name": "История пр",
+              "name": "История",
+              "type": "практика",
               "number": 3,
               "place": "А-327",
-              "weekSettings": "odd"
+              "even": 2,
+              "weekSettings": "except",
+              "weeks": [10]
             },
             {
               "name": "Мет мат. ан.",
               "type": "практика",
               "number": 4,
-              "place": "А-307",
-              "weekSettings": "all"
+              "place": "А-307"
             }
           ]
         },
@@ -464,36 +492,35 @@
               "name": "Языки и МП",
               "number": 2,
               "place": "Б-209п",
-              "weekSettings": "even",
+              "even": 2,
               "subgroup": 1
             },
             {
               "name": "Языки и МП",
               "number": 3,
               "place": "Б-209п",
-              "weekSettings": "odd",
+              "even": 2,
               "subgroup": 1
             },
             {
               "name": "Дифф. геом.",
               "type": "лекция",
               "number": 4,
-              "place": "А-15",
-              "weekSettings": "all"
+              "place": "А-15"
             },
             {
               "name": "Дискр. мат.",
               "type": "лекция",
               "number": 5,
               "place": "А-16",
-              "weekSettings": "even"
+              "even": 1
             },
             {
               "name": "Экономика",
               "type": "лекция",
               "number": 5,
               "place": "А-9",
-              "weekSettings": "odd"
+              "even": 2
             }
           ]
         },
@@ -503,35 +530,31 @@
             {
               "name": "Ин. яз.",
               "number": 1,
-              "place": "И-307",
-              "weekSettings": "all"
+              "place": "И-307"
             },
             {
               "name": "Дифф. геом.",
               "number": 2,
-              "place": "Б-417",
-              "weekSettings": "all"
+              "place": "Б-417"
             },
             {
               "name": "Алг. и геом.",
               "type": "практика",
               "number": 3,
-              "place": "Г-420",
-              "weekSettings": "all"
+              "place": "Г-420"
             },
             {
               "name": "Мат. анализ",
               "type": "лекция",
               "number": 4,
-              "place": "А-15",
-              "weekSettings": "all"
+              "place": "А-15"
             },
             {
               "name": "Мат. анализ",
               "type": "практика",
               "number": 5,
               "place": "А-173",
-              "weekSettings": "even"
+              "even": 1
             }
           ]
         },
@@ -542,29 +565,28 @@
               "name": "Мет. мат. ан.",
               "type": "лекция",
               "number": 2,
-              "place": "А-16",
-              "weekSettings": "all"
+              "place": "А-16"
             },
             {
               "name": "БД",
               "type": "лекция",
               "number": 3,
               "place": "А-177",
-              "weekSettings": "even"
+              "even": 1
             },
             {
               "name": "БД",
               "type": "лабораторная",
               "number": 3,
               "place": "Б-209л",
-              "weekSettings": "even"
+              "even": 2
             },
             {
               "name": "Языки и МП",
               "type": "практика",
               "number": 4,
               "place": "Б-209п",
-              "weekSettings": "even",
+              "even": 1,
               "subgroup": 2
             },
             {
@@ -572,21 +594,19 @@
               "type": "лабораторная",
               "number": 4,
               "place": "Б-209л",
-              "weekSettings": "odd",
+              "even": 2,
               "subgroup": 1
             },
             {
               "name": "Физ-ра",
               "number": 5,
-              "place": "",
-              "weekSettings": "all"
+              "place": ""
             },
             {
               "name": "Мет. мат. ан.",
               "type": "практика",
               "number": 6,
-              "place": "Г-420",
-              "weekSettings": "all"
+              "place": "Г-420"
             }
           ]
         },
@@ -597,28 +617,25 @@
               "name": "Языки и МП",
               "type": "лекция",
               "number": 1,
-              "place": "А-177",
-              "weekSettings": "all"
+              "place": "А-177"
             },
             {
               "name": "Физ-ра",
               "number": 2,
-              "place": "",
-              "weekSettings": "all"
+              "place": ""
             },
             {
               "name": "Алг. и геом.",
               "type": "лекция",
               "number": 4,
-              "place": "А-16",
-              "weekSettings": "all"
+              "place": "А-16"
             },
             {
               "name": "Экономика",
               "type": "практика",
               "number": 5,
               "place": "Д-209",
-              "weekSettings": "even"
+              "even": 1
             }
           ]
         },
@@ -629,30 +646,29 @@
               "name": "Диф. ур.",
               "type": "практика",
               "number": 1,
-              "place": "А-215",
-              "weekSettings": "all"
+              "place": "А-215"
             },
             {
               "name": "Дискр. мат.",
               "type": "практика",
               "number": 2,
-              "place": "А-180",
-              "weekSettings": "all"
+              "place": "А-180"
             },
             {
               "name": "Диф. ур.",
               "type": "лекция",
               "number": 3,
-              "place": "А-15",
-              "weekSettings": "all"
+              "place": "А-15"
             },
             {
               "name": "Языки и МП",
               "type": "практика",
               "number": 4,
               "place": "Б-209",
-              "weekSettings": "even",
-              "subgroup": 1
+              "even": 2,
+              "subgroup": 1,
+              "weekSettings": "except",
+              "weeks": [10]
             }
           ]
         },
@@ -674,6 +690,881 @@
               "place": "А-12",
               "weekSettings": "only",
               "weeks": [10]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "group": "КМБО-05-18",
+      "days": [
+        {
+          "day": "ПН",
+          "pars": [
+            {
+              "name": "Дифф. геом.",
+              "type": "практика",
+              "number": 3,
+              "place": "А-180"
+            },
+            {
+              "name": "Дифф. геом.",
+              "type": "лекция",
+              "number": 4,
+              "place": "А-15"
+            },
+            {
+              "name": "Дискр. мат.",
+              "type": "лекция",
+              "number": 5,
+              "place": "А-16",
+              "even": 1
+            },
+            {
+              "name": "Экономика",
+              "type": "лекция",
+              "number": 5,
+              "place": "А-9",
+              "even": 2
+            },
+            {
+              "name": "Языки и МП",
+              "type": "практика",
+              "number": 6,
+              "place": "Б-209"
+            }
+          ]
+        },
+        {
+          "day": "ВТ",
+          "pars": [
+            {
+              "name": "Алг. и геом.",
+              "type": "практика",
+              "number": 2,
+              "place": "Г-420"
+            },
+            {
+              "name": "Ин. яз.",
+              "number": 3,
+              "place": "Б-408"
+            },
+            {
+              "name": "Мат. ан.",
+              "type": "лекция",
+              "number": 4,
+              "place": "А-15"
+            },
+            {
+              "name": "Мат. ан.",
+              "type": "практика",
+              "number": 5,
+              "place": "А-173",
+              "even": 2
+            },
+            {
+              "name": "Языки и МП",
+              "type": "практика",
+              "number": 6,
+              "place": "Б-209",
+              "even": 1,
+              "weekSettings": "except",
+              "weeks": [11]
+            },
+            {
+              "name": "Дифф. геом.",
+              "type": "практика",
+              "number": 6,
+              "place": "А-173",
+              "even": 2,
+              "weekSettings": "except",
+              "weeks": [10]
+            }
+          ]
+        },
+        {
+          "day": "СР",
+          "pars": [
+            {
+              "name": "БД",
+              "type": "лабораторная",
+              "number": 1,
+              "place": "Б-209п",
+              "even": 1
+            },
+            {
+              "name": "Мет. мат. ан.",
+              "type": "лекция",
+              "number": 2,
+              "place": "А-16"
+            },
+            {
+              "name": "БД",
+              "type": "лекция",
+              "number": 3,
+              "place": "А-177",
+              "even": 1
+            },
+            {
+              "name": "Физ-ра",
+              "number": 4,
+              "place": ""
+            },
+            {
+              "name": "Мет. мат. ан.",
+              "type": "практика",
+              "number": 5,
+              "place": "Г-420"
+            }
+          ]
+        },
+        {
+          "day": "ЧТ",
+          "pars": [
+            {
+              "name": "Языки и МП",
+              "type": "лекция",
+              "number": 1,
+              "place": "А-177"
+            },
+            {
+              "name": "Физ-ра",
+              "number": 2,
+              "place": ""
+            },
+            {
+              "name": "Алг. и геом.",
+              "type": "лекция",
+              "number": 4,
+              "place": "А-16"
+            },
+            {
+              "name": "Экономика",
+              "type": "практика",
+              "number": 5,
+              "place": "Д-209",
+              "even": 2
+            }
+          ]
+        },
+        {
+          "day": "ПТ",
+          "pars": [
+            {
+              "name": "Дискр. мат.",
+              "type": "практика",
+              "number": 1,
+              "place": "А-180"
+            },
+            {
+              "name": "Диф. ур.",
+              "type": "практика",
+              "number": 2,
+              "place": "А-215"
+            },
+            {
+              "name": "Диф. ур.",
+              "type": "лекция",
+              "number": 3,
+              "place": "А-15"
+            }
+          ]
+        },
+        {
+          "day": "СБ",
+          "pars": [
+            {
+              "name": "Дифф. геом.",
+              "type": "лекция",
+              "number": 3,
+              "place": "А-12",
+              "weekSettings": "only",
+              "weeks": [10]
+            },
+            {
+              "name": "Экономика",
+              "type": "лекция",
+              "number": 4,
+              "place": "А-12",
+              "weekSettings": "only",
+              "weeks": [10]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "group": "КМБО-02-17",
+      "days": [
+        {
+          "day": "ПН",
+          "pars": [
+            {
+              "name": "Теор. мех.",
+              "type": "практика / лаб.",
+              "number": 4,
+              "place": "Б-417"
+            },
+            {
+              "name": "Физ-ра",
+              "number": 5,
+              "place": ""
+            },
+            {
+              "name": "Теор. мех.",
+              "type": "лабораторная",
+              "number": 6,
+              "place": "Б-417",
+              "weekSettings": "only",
+              "weeks": [7]
+            }
+          ]
+        },
+        {
+          "day": "ВТ",
+          "pars": [
+            {
+              "name": "Числ. методы",
+              "number": 1,
+              "place": "Б-421"
+            },
+            {
+              "name": "ТВ и МС",
+              "type": "практика",
+              "number": 2,
+              "place": "А-173"
+            },
+            {
+              "name": "САПО",
+              "type": "лекция",
+              "number": 3,
+              "place": "Б-209л"
+            },
+            {
+              "name": "САПО",
+              "type": "лекция",
+              "number": 4,
+              "place": "Б-209л",
+              "even": 1
+            },
+            {
+              "name": "САПО",
+              "number": 4,
+              "place": "Б-209л",
+              "even": 2,
+              "subgroup": 1
+            },
+            {
+              "name": "ТВ и МС",
+              "type": "лекция",
+              "number": 5,
+              "place": "А-4"
+            }
+          ]
+        },
+        {
+          "day": "СР",
+          "pars": [
+            {
+              "name": "Комп. граф.",
+              "number": 1,
+              "place": "Б-209л",
+              "even": 1,
+              "subgroup": 1
+            },
+            {
+              "name": "Комп. граф.",
+              "number": 1,
+              "place": "Б-209п",
+              "even": 2,
+              "subgroup": 2
+            }
+          ]
+        },
+        {
+          "day": "ЧТ",
+          "pars": [
+            {
+              "name": "РЛС",
+              "number": 1,
+              "place": "Б-209"
+            },
+            {
+              "name": "РЛС",
+              "number": 2,
+              "place": "Б-209",
+              "even": 1
+            },
+            {
+              "name": "Теор. мех.",
+              "type": "лекция",
+              "number": 2,
+              "place": "А-8",
+              "even": 2
+            },
+            {
+              "name": "Физ-ра",
+              "number": 3,
+              "place": "",
+              "even": 1
+            },
+            {
+              "name": "Функц. ан.",
+              "type": "практика",
+              "number": 4,
+              "place": "А-314"
+            }
+          ]
+        },
+        {
+          "day": "ПТ",
+          "pars": [
+            {
+              "name": "ОС",
+              "number": 4,
+              "place": "Б-209"
+            },
+            {
+              "name": "САПО",
+              "type": "практика",
+              "number": 5,
+              "place": "Б-209",
+              "even": 1,
+              "subgroup": 2
+            },
+            {
+              "name": "ОС",
+              "number": 5,
+              "place": "Б-209",
+              "even": 2
+            }
+          ]
+        },
+        {
+          "day": "СБ",
+          "pars": [
+            {
+              "name": "Комп. граф.",
+              "type": "лекция",
+              "number": 1,
+              "place": "Б-209"
+            },
+            {
+              "name": "Функ. ан.",
+              "type": "лекция",
+              "number": 2,
+              "place": "А-8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "group": "КМБО-05-17",
+      "days": [
+        {
+          "day": "ПН",
+          "pars": [
+            {
+              "name": "ТВ и МС",
+              "type": "практика",
+              "number": 4,
+              "place": "А-180"
+            },
+            {
+              "name": "Теор. мех.",
+              "type": "практика / лаб.",
+              "number": 5,
+              "place": "Б-417"
+            },
+            {
+              "name": "Теор. мех.",
+              "type": "лабораторная",
+              "number": 6,
+              "place": "Б-417",
+              "weekSettings": "only",
+              "weeks": [9]
+            }
+          ]
+        },
+        {
+          "day": "ВТ",
+          "pars": [
+            {
+              "name": "Комп. гр.",
+              "type": "практика",
+              "number": 1,
+              "place": "Б-209л",
+              "even": 2
+            },
+            {
+              "name": "Числ. методы",
+              "number": 2,
+              "place": "Б-421"
+            },
+            {
+              "name": "САПО",
+              "type": "лекция",
+              "number": 3,
+              "place": "Б-209л"
+            },
+            {
+              "name": "САПО",
+              "type": "лекция",
+              "number": 4,
+              "place": "Б-209л",
+              "even": 1
+            },
+            {
+              "name": "ТВ и МС",
+              "type": "лекция",
+              "number": 5,
+              "place": "А-4"
+            }
+          ]
+        },
+        {
+          "day": "СР",
+          "pars": [
+            {
+              "name": "ДСЗ",
+              "number": 1,
+              "place": " "
+            }
+          ]
+        },
+        {
+          "day": "ЧТ",
+          "pars": [
+            {
+              "name": "РЛС",
+              "number": 1,
+              "place": "Б-209"
+            },
+            {
+              "name": "РЛС",
+              "number": 2,
+              "place": "Б-209",
+              "even": 1
+            },
+            {
+              "name": "Теор. мех.",
+              "type": "лекция",
+              "number": 2,
+              "place": "А-8",
+              "even": 2
+            },
+            {
+              "name": "Физ-ра",
+              "number": 4,
+              "place": ""
+            },
+            {
+              "name": "Функц. ан.",
+              "type": "практика",
+              "number": 5,
+              "place": "А-314"
+            }
+          ]
+        },
+        {
+          "day": "ПТ",
+          "pars": [
+            {
+              "name": "САПО",
+              "type": "практика",
+              "number": 2,
+              "place": "Б-209",
+              "even": 2
+            },
+            {
+              "name": "Физ-ра",
+              "number": 3,
+              "place": "",
+              "even": 2
+            },
+            {
+              "name": "ОС",
+              "number": 4,
+              "place": "Б-209"
+            },
+            {
+              "name": "ОС",
+              "number": 5,
+              "place": "Б-209",
+              "even": 1
+            },
+            {
+              "name": "САПО",
+              "type": "практика",
+              "number": 5,
+              "place": "Б-209",
+              "even": 2
+            }
+          ]
+        },
+        {
+          "day": "СБ",
+          "pars": [
+            {
+              "name": "Комп. граф.",
+              "type": "лекция",
+              "number": 1,
+              "place": "Б-209"
+            },
+            {
+              "name": "Функ. ан.",
+              "type": "лекция",
+              "number": 2,
+              "place": "А-8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "group": "КМБО-02-16",
+      "days": [
+        {
+          "day": "ПН",
+          "pars": [
+            {
+              "name": "САПР",
+              "number": 1,
+              "place": "Б-209"
+            },
+            {
+              "name": "САПР",
+              "number": 2,
+              "place": "Б-209л"
+            },
+            {
+              "name": "Методы опт.",
+              "type": "лекция / практика",
+              "number": 3,
+              "place": "А-6"
+            },
+            {
+              "name": "Методы опт.",
+              "type": "практика",
+              "number": 4,
+              "place": "А-210"
+            },
+            {
+              "name": "Случ. проц.",
+              "type": "практика",
+              "number": 5,
+              "place": "А-180",
+              "even": 2
+            },
+            {
+              "name": "Случ. проц.",
+              "type": "практика",
+              "number": 6,
+              "place": "А-318",
+              "weekSettings": "except",
+              "weeks": [8],
+              "even": 2
+            }
+          ]
+        },
+        {
+          "day": "ВТ",
+          "pars": [
+            {
+              "name": "Проект. транс.",
+              "number": 1,
+              "place": "Б-209л"
+            },
+            {
+              "name": "Проект. транс.",
+              "number": 2,
+              "place": "Б-209п",
+              "even": 2
+            },
+            {
+              "name": "Теория игр",
+              "number": 3,
+              "place": "А-213м"
+            },
+            {
+              "name": "УРПО",
+              "number": 4,
+              "place": "Б-209п"
+            },
+            {
+              "name": "УРПО",
+              "number": 5,
+              "place": "Б-209"
+            }
+          ]
+        },
+        {
+          "day": "СР",
+          "pars": [
+            {
+              "name": "Гр. об.",
+              "number": 1,
+              "place": "А-12",
+              "weekSettings": "except",
+              "weeks": [10, 12],
+              "even": 2
+            },
+            {
+              "name": "ППУ и ОПД",
+              "number": 2,
+              "place": " "
+            },
+            {
+              "name": "Случ. проц.",
+              "type": "лекция",
+              "number": 3,
+              "place": "А-4",
+              "even": 2
+            },
+            {
+              "name": "КСЕ",
+              "number": 4,
+              "place": "А-204"
+            },
+            {
+              "name": "Случ. проц.",
+              "type": "практика",
+              "number": 5,
+              "place": "Г-213"
+            }
+          ]
+        },
+        {
+          "day": "ЧТ",
+          "pars": [
+            {
+              "name": "Спецрасписание",
+              "number": 1,
+              "place": " ",
+              "length": "all"
+            }
+          ]
+        },
+        {
+          "day": "ПТ",
+          "pars": [
+            {
+              "name": "Практика по ППУ и ОПД",
+              "number": 1,
+              "place": " "
+            }
+          ]
+        },
+        {
+          "day": "СБ",
+          "pars": [
+            {
+              "name": "Методы опт.",
+              "type": "практика",
+              "number": 3,
+              "place": "А-12",
+              "weekSettings": "only",
+              "weeks": [4]
+            },
+            {
+              "name": "Методы опт.",
+              "type": "практика",
+              "number": 4,
+              "place": "А-318",
+              "weekSettings": "only",
+              "weeks": [4]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "group": "КММО-02-19",
+      "type": "маг.",
+      "days": [
+        {
+          "day": "ПН",
+          "pars": [
+            {
+              "name": "Спецрасписание",
+              "number": 1,
+              "place": " ",
+              "length": "all"
+            }
+          ]
+        },
+        {
+          "day": "ВТ",
+          "pars": [
+            {
+              "name": "НИР",
+              "number": 1,
+              "length": "all"
+            },
+            {
+              "name": "Ин. яз.",
+              "number": 6,
+              "place": "Б-402"
+            },
+            {
+              "name": "Ин. яз.",
+              "number": 7,
+              "place": "Б-402",
+              "even": 1
+            }
+          ]
+        },
+        {
+          "day": "СР",
+          "pars": [
+            {
+              "name": "Дискр. мат. модели",
+              "number": 2,
+              "place": "А-316"
+            },
+            {
+              "name": "Непр. мат. модели",
+              "number": 3,
+              "place": "А-316"
+            },
+            {
+              "name": "12-14н Непр. ММ",
+              "number": 4,
+              "place": "А-316",
+              "weekSettings": "only",
+              "weeks": [12, 13, 14]
+            },
+            {
+              "name": "12-14н Непр. ММ",
+              "number": 5,
+              "place": "А-316",
+              "weekSettings": "only",
+              "weeks": [12, 13, 14]
+            }
+          ]
+        },
+        {
+          "day": "ЧТ",
+          "pars": [
+            {
+              "name": "НИР",
+              "number": 1,
+              "place": " ",
+              "length": "all"
+            }
+          ]
+        },
+        {
+          "day": "ПТ",
+          "pars": [
+            {
+              "name": "План. эксп.",
+              "number": 1,
+              "place": "Б-209",
+              "even": 1
+            },
+            {
+              "name": "План. эксп.",
+              "number": 2,
+              "place": "Б-209",
+              "even": 1
+            },
+            {
+              "name": "СТПО",
+              "number": 3,
+              "place": "Б-209"
+            },
+            {
+              "name": "Дискр. мат. модели",
+              "number": 4,
+              "place": "А-211"
+            },
+            {
+              "name": "Дискр. ММ",
+              "number": 5,
+              "place": "А-211",
+              "weekSettings": "only",
+              "weeks": [2, 4, 12, 14]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "group": "КММО-02-18",
+      "type": "маг.",
+      "days": [
+        {
+          "day": "ПН",
+          "pars": [
+            {
+              "name": "НИР",
+              "number": 1,
+              "place": " ",
+              "length": "all"
+            }
+          ]
+        },
+        {
+          "day": "ВТ",
+          "pars": [
+            {
+              "name": "Эргономика ПО",
+              "number": 2,
+              "place": "Б-209л"
+            },
+            {
+              "name": "Эргономика ПО",
+              "number": 3,
+              "place": "Б-209п"
+            }
+          ]
+        },
+        {
+          "day": "СР",
+          "pars": [
+            {
+              "name": "Спец. мат. мод.",
+              "number": 1,
+              "place": "Б-209л",
+              "even": 2
+            },
+            {
+              "name": "ИМиСП ПМИ",
+              "number": 2,
+              "place": "А-210"
+            },
+            {
+              "name": "Спец. мат. мод.",
+              "number": 3,
+              "place": "Б-209л",
+              "even": 1
+            }
+          ]
+        },
+        {
+          "day": "ЧТ",
+          "pars": [
+            {
+              "name": "Совр. комп. техн.",
+              "number": 2,
+              "place": "Вега, 6эт"
+            },
+            {
+              "name": "НИР",
+              "number": 3,
+              "length": "all"
+            }
+          ]
+        },
+        {
+          "day": "ПТ",
+          "pars": [
+            {
+              "name": "НИР",
+              "number": 1,
+              "length": "all"
             }
           ]
         }

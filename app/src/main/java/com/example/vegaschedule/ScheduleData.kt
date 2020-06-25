@@ -39,7 +39,7 @@ data class Colors(
     val default: String,
     val lang: String,
     val ttt: String,
-    val кафедра: String
+    val kafedra: String
 )
 
 data class FullDay(
