@@ -194,7 +194,7 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
                         is TeacherFragment -> {
 
                             val dayPars = schedule.getTeacherSchedule(
-                                teacherSearchQuery,
+                                teacherSearchQuery.capitalize(),
                                 day,
                                 activity.getChosenTeacherWeek()
                             )
@@ -403,7 +403,6 @@ class DayFragment(private val activity: MainActivity, private val parent: Fragme
 
                     override fun afterTextChanged(s: Editable?) {
                         teacherSearchQuery = s.toString()
-
                         setUI()
                     }
                 })
