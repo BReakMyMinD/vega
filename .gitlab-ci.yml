@@ -6,6 +6,7 @@ before_script:
 
 stages:
   - build
+  - test
   - deploy
 
 build: 
@@ -15,6 +16,32 @@ build:
     artifacts:
        paths:
        - app/build/outputs/
+       
+       
+       
+       
+tests:
+    stage: test
+    script:
+       - ./gradlew test 
+
+
+.connected-template: &connected-template
+  stage: test
+  image: registry.gitlab.com/fdroid/ci-images-client:latest
+  script:
+    - ./gradlew assemble 
+    - start-emulator
+    - wait-for-emulator
+    - adb devices
+    - adb shell input keyevent 82 &
+    - ./gradlew connectedAndroidTest || (adb -e logcat -d > logcat.txt; exit 1)
+  artifacts:
+    paths:
+      - logcat.txt
+
+connected 22 default armeabi-v7a:
+  <<: *connected-template
     
 pages:
   stage: deploy
