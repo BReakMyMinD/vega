@@ -5,6 +5,10 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.PerformException
 import androidx.test.espresso.UiController
 import androidx.test.espresso.ViewAction
+import androidx.test.espresso.action.GeneralLocation
+import androidx.test.espresso.action.GeneralSwipeAction
+import androidx.test.espresso.action.Press
+import androidx.test.espresso.action.Swipe
 import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
@@ -75,19 +79,37 @@ class MainActivityTest {
     @Test
     fun test2() {
         onView(withId(R.id.settings)).perform(click());
-//        onView(withId(R.id.spinner3)).check(matches(withText("КМБО-02-18")))
+        onView(withId(R.id.schedule)).perform(click())
+        onView(allOf(withId(R.id.viewPager), isDisplayed())).perform(swipeLeft())
+        onView(allOf(withId(R.id.viewPager), isDisplayed())).perform(swipeLeft())
+        onView(withId(R.id.scheduleWeekSpinner)).perform(click())
+        onView(withText("15")).perform(click())
+        onView(allOf(withId(R.id.viewPager), isDisplayed())).perform(swipeRight())
+        onView(allOf(withId(R.id.viewPager), isDisplayed())).perform(swipeRight())
     }
 
 
     @Test
     fun test3() {
         onView(withId(R.id.teacher)).perform(click());
-        onView(withId(R.id.editText)).perform(typeText("Adamovich"))
+        onView(withId(R.id.editText)).perform(typeText("Gromova"))
         onView(withId(R.id.teacherWeekSpinner)).perform(click())
         onView(withText("15")).perform(click());
-//        onView(withId(R.id.tabItem9)).perform(swipeRight())
-//        onView(withId(R.id.viewPager)).perform(RecyclerViewActions.actionOnItemAtPosition(2, click()));
+        onView(allOf(withId(R.id.viewPager), isDisplayed())).perform(swipeLeft())
+        onView(allOf(withId(R.id.viewPager), isDisplayed())).perform(swipeLeft())
+        onView(allOf(withId(R.id.viewPager), isDisplayed())).perform(swipeLeft())
+        onView(allOf(withId(R.id.viewPager), isDisplayed())).perform(swipeLeft())
+        Thread.sleep(1000)
+    }
+
+    @Test
+    fun test4() {
+        onView(withId(R.id.auditorium)).perform(click())
+        onView(allOf(withId(R.id.viewPager), isDisplayed())).perform(swipeLeft())
+        onView(allOf(withId(R.id.viewPager), isDisplayed())).perform(swipeLeft())
+        onView(allOf(withId(R.id.viewPager), isDisplayed())).perform(swipeLeft())
+    }
     }
 
 
-}
+
