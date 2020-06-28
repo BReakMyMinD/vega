@@ -35,10 +35,7 @@ tests:
     - wait-for-emulator
     - adb devices
     - adb shell input keyevent 82 &
-    - ./gradlew connectedAndroidTest || (adb -e logcat -d > logcat.txt; exit 1)
-  artifacts:
-    paths:
-      - logcat.txt
+    - ./gradlew connectedAndroidTest
 
 connected 22 default armeabi-v7a:
   <<: *connected-template
