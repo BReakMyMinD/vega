@@ -28,7 +28,7 @@ tests:
 
 .connected-template: &connected-template
   stage: test
-  image: inovex/gitlab-ci-android
+  image: openjdk
   script:
     - ./gradlew assemble 
     - start-emulator
