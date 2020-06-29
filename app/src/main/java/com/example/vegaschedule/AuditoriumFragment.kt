@@ -8,12 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.annotation.RequiresApi
-import androidx.core.widget.addTextChangedListener
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.fragment_auditorium.*
-import kotlinx.android.synthetic.main.fragment_teacher.*
-import kotlinx.android.synthetic.main.fragment_teacher.editText
 
 /**
  * A simple [Fragment] subclass.

@@ -10,7 +10,6 @@ import android.widget.ArrayAdapter
 import androidx.annotation.RequiresApi
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_schedule.*
 
 /**
