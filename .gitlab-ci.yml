@@ -37,8 +37,6 @@ tests:
     - adb shell input keyevent 82 &
     - ./gradlew connectedAndroidTest
 
-connected 22 default armeabi-v7a:
-  <<: *connected-template
     
 pages:
   stage: deploy
