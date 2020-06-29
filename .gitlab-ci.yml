@@ -32,7 +32,7 @@ tests:
   script:
     - ./gradlew assemble 
     - start-emulator
-    - ./android-wait-for-emulator
+    - wait-for-emulator
     - adb devices
     - adb shell input keyevent 82 &
     - ./gradlew connectedAndroidTest || (adb -e logcat -d > logcat.txt; exit 1)
@@ -40,7 +40,7 @@ tests:
     paths:
       - logcat.txt
 
-connected 22 default armeabi-v7a:
+connected 19 google_apis armeabi-v7a:
   <<: *connected-template
 
     
