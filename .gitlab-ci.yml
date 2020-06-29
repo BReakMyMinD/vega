@@ -28,7 +28,7 @@ tests:
 
 .connected-template: &connected-template
   stage: test
-  image: openjdk
+  image: registry.gitlab.com/fdroid/ci-images-client:latest
   script:
     - ./gradlew assemble 
     - start-emulator
