@@ -28,7 +28,7 @@ tests:
 
 .connected-template: &connected-template
   stage: test
-  image: registry.gitlab.com/fdroid/ci-images-client:latest
+  image: inovex/gitlab-ci-android
   script:
     - ./gradlew assemble 
     - start-emulator
